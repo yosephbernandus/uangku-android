@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#327C94</color>
     <color name="colorPrimary">#034891</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#3D9FA9</color>
@@ -8,6 +9,7 @@
     <color name="disableGray">#BCBEC0</color>
     <color name="mediumGray">#999999</color>
     <color name="darkGray">#414042</color>
+    <color name="darkLowGray">#797979</color>
     <color name="yellow">#FCA252</color>
     <color name="blue">#034891</color>
     <color name="magenta">#3D9FA9</color>

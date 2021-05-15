@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home_tab"
+        android:title="Home"
+        android:icon="@drawable/home_icon"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/history_tab"
+        android:title="History"
+        android:icon="@drawable/statistic_icon"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/funds_tab"
+        android:title="Add Funds"
+        android:icon="@drawable/add_icon"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/savings_tab"
+        android:title="Savings"
+        android:icon="@drawable/assignment_icon"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/settings_tab"
+        android:title="Account"
+        android:icon="@drawable/user_circle_icon"
+        app:showAsAction="always" />
+</menu>
