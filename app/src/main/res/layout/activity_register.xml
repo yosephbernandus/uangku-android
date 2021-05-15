@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/doveLightBlue"
     android:orientation="vertical"
-    tools:context=".activities.auth.LoginActivity">
+    tools:context=".activities.auth.RegisterActivity">
 
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -21,16 +21,16 @@
             android:fontFamily="@font/poppins_regular"
             android:textSize="14sp"
             android:textColor="@color/colorPrimaryDark"
-            android:text="Don't have an account ? "
+            android:text="Already have an account ? "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:onClick="signUpOnClick"
+            android:onClick="signInOnClick"
             android:fontFamily="@font/poppins_semi_bold"
             android:textSize="14sp"
             android:textColor="@color/lightGreen"
-            android:text="Sign Up"
+            android:text="Sign In"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -51,19 +51,46 @@
             android:fontFamily="@font/poppins_semi_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome Back !"
+            android:text="Welcome Onboard!"
             android:textColor="@color/colorPrimaryDark" />
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/login_icon"/>
+            android:text="Let's help you manage your money." />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxBackgroundColor="@color/white"
+            style="@style/TextInputLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/poppins_regular"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:hint="Enter your name"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
+                android:inputType="textPersonName"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -107,7 +134,33 @@
                 android:layout_height="60dp"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                android:hint="Enter your password"
+                android:hint="Enter password"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxBackgroundColor="@color/white"
+            style="@style/TextInputLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/poppins_regular"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:hint="Confirm password"
                 android:paddingTop="10dp"
                 android:paddingBottom="8dp"
                 android:inputType="textPassword"
@@ -122,7 +175,7 @@
             android:textSize="18dp"
             android:layout_marginTop="30dp"
             android:id="@+id/loginButton"
-            android:text="Login"
+            android:text="Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

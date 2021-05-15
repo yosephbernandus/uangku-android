@@ -27,6 +27,9 @@
         <activity
             android:name=".activities.auth.LoginActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.auth.RegisterActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 
