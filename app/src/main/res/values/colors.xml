@@ -23,4 +23,6 @@
     <color name="mediumBlue">#034880</color>
     <color name="doveLightBlue">#E9EFF1</color>
     <color name="lightGreen">#50C2C9</color>
+    <color name="background">#F4F4F4</color>
+    <color name="sectionBackground">#FFFDFD</color>
 </resources>

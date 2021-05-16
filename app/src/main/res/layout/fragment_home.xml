@@ -1,6 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<mobile.uangku.android.core.CustomSwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:id="@+id/swipeRefreshLayout">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@color/primary"
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:fillViewport="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:contentDescription="Circle"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                        app:srcCompat="@drawable/circle_shape"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:id="@+id/statusText"
+                        android:textSize="12sp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status Keuangan"/>
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:layout_below="@id/statusText"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="50dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RP 7.500.000"/>
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/photo"
+                        android:layout_alignParentRight="true"
+                        app:roundAsCircle="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/iconLayout"
+                    android:fillViewport="true"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:fillViewport="true"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:srcCompat="@drawable/budgeting_icon"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Status \nKeuangan"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:srcCompat="@drawable/document_icon"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Catat \nTransaksi"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="10dp"
+                            app:srcCompat="@drawable/flag_icon"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Tujuan \nKeuangan"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/headerLayout"
+                android:background="@drawable/rounded_background"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:text="Insight"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_margin="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/bag_shop"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="7dp"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="8sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Anda dapat mengeluarkan"/>
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Oops!"/>
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="8sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masukan budget anda terlebih dahulu"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</mobile.uangku.android.core.CustomSwipeRefreshLayout>
