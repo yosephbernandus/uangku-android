@@ -25,4 +25,6 @@
     <color name="lightGreen">#50C2C9</color>
     <color name="background">#F4F4F4</color>
     <color name="sectionBackground">#FFFDFD</color>
+    <color name="linkSection">#0D5C00</color>
+    <color name="minus">#FF0000</color>
 </resources>

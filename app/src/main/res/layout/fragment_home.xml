@@ -158,10 +158,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/headerLayout"
+                android:layout_below="@+id/bodyLayout"
                 android:background="@drawable/rounded_background"
                 android:orientation="vertical">
-
 
                 <TextView
                     android:layout_marginTop="20dp"
@@ -175,6 +174,7 @@
 
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:background="@drawable/rounded_section"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
@@ -224,9 +224,299 @@
                             android:layout_height="wrap_content"
                             android:text="Masukan budget anda terlebih dahulu"/>
                     </LinearLayout>
-
-
                 </LinearLayout>
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_margin="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/summary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:padding="7dp"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="8sp"
+                            android:paddingBottom="6dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rata - rata pengeluaran per hari"/>
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 500.000"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/black"
+                        android:text="Transaksi Terakhir"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/linkSection"
+                        android:text="Lihat Semua"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/groceries"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="Groceries"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/minus"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-Rp. 500.000"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/black"
+                        android:text="Sisa Budgetku"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/linkSection"
+                        android:text="Tambah Budget"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:paddingRight="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/money_hand"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="Sisa uang anda adalah"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 1.500.000"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/black"
+                        android:text="Tujuan Keuanganku"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@color/linkSection"
+                        android:text="Lihat Semua"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_margin="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:paddingBottom="5dp"
+                            app:srcCompat="@drawable/home"/>
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="Rumah"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:paddingTop="5dp"
+                            android:paddingRight="10dp"
+                            android:layout_gravity="right"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:text="365 Hari Lagi"/>
+
+                        <TextView
+                            android:paddingRight="11dp"
+                            android:layout_gravity="right"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp.0 - 30.000.000"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
