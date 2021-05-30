@@ -75,6 +75,7 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -102,6 +103,8 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                app:passwordToggleEnabled="true"
+                android:id="@+id/passwordEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -116,6 +119,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:onClick="loginButtonOnClick"
             app:backgroundTint="@color/lightGreen"
             android:fontFamily="@font/poppins_semi_bold"
             android:background="@drawable/green_button"
