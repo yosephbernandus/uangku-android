@@ -91,6 +91,9 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            android:textColorHint="@color/mediumGray"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +106,6 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
-                app:passwordToggleEnabled="true"
                 android:id="@+id/passwordEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"

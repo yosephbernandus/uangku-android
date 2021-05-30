@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginButtonOnClick(view: View) {
         if (!Validator.validateMinLength(emailEditText, 1))
-            Alert.dialog(this, "Mohon masukan surel / nomor ponsel dengan benar")
+            Alert.dialog(this, "Mohon masukan surel dengan benar")
         else if (!Validator.validateMinLength(passwordEditText, 1))
             Alert.dialog(this, "Mohon masukan password anda")
         else {
