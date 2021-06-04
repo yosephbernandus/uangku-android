@@ -76,6 +76,7 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -102,6 +103,7 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -114,7 +116,6 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="5dp"
@@ -129,6 +130,61 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneEditText"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:hint="Enter your phone number"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxBackgroundColor="@color/white"
+            style="@style/TextInputLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/birthdayEditText"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:hint="Enter your birthday"
+                android:paddingTop="10dp"
+                android:paddingBottom="8dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxBackgroundColor="@color/white"
+            style="@style/TextInputLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -143,6 +199,8 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,6 +213,7 @@
             style="@style/TextInputLayoutStyle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPasswordEditText"
                 android:fontFamily="@font/poppins_regular"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
