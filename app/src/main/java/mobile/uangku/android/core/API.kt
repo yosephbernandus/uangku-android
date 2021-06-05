@@ -14,7 +14,7 @@ import java.io.File
 
 object API {
 
-    val PRODUCTION_URL = "http://192.168.100.5:8000/"
+    val PRODUCTION_URL = "http://192.168.100.30:8000/"
     val TOKEN = "Ip089Lww4CgHGea9Yr3N6Pfb6Juea6OedTqHcBv1WtVAdcKDY4hAxnf1MwEqaX617UyieEW"
 
     val BASE_API_KEY = "baseURL"

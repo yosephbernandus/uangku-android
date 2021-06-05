@@ -21,7 +21,7 @@ object Session {
 
     fun bootstrap(activity: Activity, response: JSONObject) {
         val preferences = Preferences(activity)
-        preferences.set("sessionKey", response.getString("session_key"))
+        preferences["sessionKey"] = response.getString("session_key")
         saveUserData(activity, response.getJSONObject("user"))
 
         val intent = Intent(activity, TabActivity::class.java)
