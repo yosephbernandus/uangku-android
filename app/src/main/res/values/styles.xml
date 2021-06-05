@@ -11,4 +11,9 @@
         <item name="boxStrokeColor">#ffffff</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
+
+    <style name="DateInputTextLayout" parent="Widget.MaterialComponents.TextView">
+        <item name="boxStrokeColor">#ffffff</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
 </resources>
