@@ -129,6 +129,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/goalSavingsOnClick"
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:orientation="vertical"

@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_tab.*
 import mobile.uangku.android.R
+import mobile.uangku.android.activities.goal.GoalFragment
 
 class TabActivity : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ class TabActivity : AppCompatActivity() {
             val menuItemSelectedID = menuItem.itemId
 
             if (menuItemSelectedID == R.id.home_tab) fragment = HomeFragment()
+            else if (menuItemSelectedID == R.id.savings_tab) fragment = GoalFragment()
             else fragment = SettingsFragment()
 
             val fragmentTransaction = supportFragmentManager.beginTransaction()
