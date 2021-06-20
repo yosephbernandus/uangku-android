@@ -127,12 +127,13 @@
                             android:text="Kamu telah menabung"/>
 
                         <TextView
+                            android:id="@+id/totalAmountSavings"
                             android:textColor="@color/linkSection"
                             android:fontFamily="@font/poppins_bold"
                             android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rp. 500.000"/>
+                            android:text="Rp. 0"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -145,99 +146,12 @@
                 android:background="@drawable/rectangle_background"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:padding="10dp"
-                    android:background="@drawable/rounded_section"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/goalsListRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content" />
 
-                    <LinearLayout
-                        android:id="@id/iconLayout"
-                        android:orientation="vertical"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/icon_background"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:padding="5dp"
-                            android:onClick="addGoalIcon"
-                            app:srcCompat="@drawable/ic_home_goal_icon"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp" />
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_toRightOf="@id/iconLayout"
-                        android:padding="7dp"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/textSavingGoal"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rumah"/>
-
-                        <TextView
-                            android:id="@+id/savingGoal"
-                            android:layout_below="@+id/textSavingGoal"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. 500.000"/>
-
-                        <TextView
-                            android:layout_below="@+id/textSavingGoal"
-                            android:layout_alignParentRight="true"
-                            android:textColor="@color/linkSection"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="12%"/>
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/daysGoal"
-                        android:layout_below="@id/iconLayout"
-                        android:orientation="vertical"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textColor="#808080"
-                            android:fontFamily="@font/poppins_semi_bold"
-                            android:textSize="10sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="89 hari lagi"/>
-
-                        <!-- TODO Create BAR -->
-
-                        <TextView
-                            android:paddingTop="10dp"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="10sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp 0 dari Rp 500.000"/>
-                    </LinearLayout>
-                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
