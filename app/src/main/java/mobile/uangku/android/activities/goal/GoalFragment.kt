@@ -19,6 +19,8 @@ import mobile.uangku.android.R
 import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Goal
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class GoalFragment : Fragment() {
 
@@ -57,9 +59,11 @@ class GoalFragment : Fragment() {
     fun setupUI() {
         val goals = Realm.getDefaultInstance().where(Goal::class.java).findAll()
         if (goals.size == 0) {
+            goalsListRecyclerView.visibility = View.GONE
             return
         }
 
+        goalsListRecyclerView.visibility = View.VISIBLE
         totalAmountSavings.text = "Rp. ${Utils.addThousandSeparator(goals.where().sum("amount").toDouble())}"
         goalsListRecyclerView.adapter = RecyclerViewAdapter(goals)
         goalsListRecyclerView.layoutManager = LinearLayoutManager(fragmentContext)
@@ -106,9 +110,21 @@ class GoalFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val goal = goals[position]
+            var goalTransaction = "Rp. 0 dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
+            var percentageTotalSaving = "0 %"
+            var dateFormat =  SimpleDateFormat("yyyy-MM-dd")
+            var currentDate = dateFormat.format(Date())
+
+            if (goal!!.transactions != null){
+                goalTransaction = "Rp. ${Utils.addThousandSeparator(goal!!.transactions!!.where().sum("amount").toDouble())} dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
+                percentageTotalSaving = "${(((goal!!.transactions!!.where().sum("amount").toDouble() / goal.amount) * 100).toString())} %"
+            }
             holder.id = goal!!.id!!
             holder.textSavingGoal.text = goal.category.name
             holder.savingGoalAmount.text = "Rp. ${Utils.addThousandSeparator(goal.amount)}"
+            holder.accumulatedSavingAmount.text = goalTransaction
+            holder.percentageTotalSaving.text = percentageTotalSaving
+//            holder.daysGoalComplete.text = "${(goal.achievementDate - currentDate).get} hari lagi"
         }
 
         override fun getItemCount(): Int {
@@ -119,6 +135,9 @@ class GoalFragment : Fragment() {
             var id = 0
             val textSavingGoal: TextView = view.textSavingGoal
             val savingGoalAmount: TextView = view.savingGoalAmount
+            val accumulatedSavingAmount: TextView = view.accumulatedSavingAmount
+//            val daysGoalComplete: TextView = view.daysGoalComplete
+            val percentageTotalSaving: TextView = view.percentageTotalSaving
 
             init {
                 view.setOnClickListener(this)

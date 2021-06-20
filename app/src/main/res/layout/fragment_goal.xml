@@ -140,6 +140,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/goalLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/bodyLayout"
@@ -147,6 +148,7 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:id="@+id/goalsListRecyclerView"
                     android:layout_width="match_parent"
