@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_goal.*
 import kotlinx.android.synthetic.main.goal_fragment_item.view.*
 import mobile.uangku.android.R
 import mobile.uangku.android.core.*
+import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Goal
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -120,7 +121,13 @@ class GoalFragment : Fragment() {
                 percentageTotalSaving = "${(((goal!!.transactions!!.where().sum("amount").toDouble() / goal.amount) * 100).toString())} %"
             }
             holder.id = goal!!.id!!
-            holder.textSavingGoal.text = goal.category.name
+
+            var categoryName = ""
+
+            if (goal!!.categoryId != null)
+                categoryName = Category[goal!!.categoryId!!]!!.name.toString()
+
+            holder.textSavingGoal.text = categoryName
             holder.savingGoalAmount.text = "Rp. ${Utils.addThousandSeparator(goal.amount)}"
             holder.accumulatedSavingAmount.text = goalTransaction
             holder.percentageTotalSaving.text = percentageTotalSaving

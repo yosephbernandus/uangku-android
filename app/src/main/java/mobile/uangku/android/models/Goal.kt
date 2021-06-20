@@ -15,13 +15,11 @@ open class Goal: RealmObject() {
     var id: Int? = null
 
     var achievementDate: Date? = null
-    var categoryGoal: RealmObject? = null
+    var categoryId: Int? = null
     var amount: Double = 0.0
     var name: String? = null
     var depositCycle: Int = 0
     var transactions: RealmList<GoalTransaction>? = null
-
-    lateinit var category: Category
 
     companion object {
 
@@ -41,10 +39,8 @@ open class Goal: RealmObject() {
             goal.amount = response.getDouble("amount")
             goal.achievementDate = DateUtils.fromDateString(response.getString("achievement_date"))
             goal.depositCycle = response.getInt("deposit_cycle")
-            if (!response.isNull("category")){
-                var category = Category.fromJSON(realm, response.getJSONObject("category"))
-                goal.categoryGoal = category
-            }
+            if (response.has("category"))
+                goal.categoryId = response.getInt("category_id")
 
             if (response.has("transactions"))
                 goal.transactions = GoalTransaction.fromJSONArray(realm, response.getJSONArray("transactions"), goal)
