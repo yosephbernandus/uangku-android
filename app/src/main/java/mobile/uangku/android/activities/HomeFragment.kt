@@ -15,6 +15,7 @@ class HomeFragment : Fragment() {
 
     lateinit var preferences: Preferences
     lateinit var fragmentContext: Context
+    lateinit var tabActivity: TabActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -27,5 +28,11 @@ class HomeFragment : Fragment() {
         goalSavingsOnClick.setOnClickListener {
             (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.savings_tab
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentContext = context!!
+        tabActivity = context as TabActivity
     }
 }
