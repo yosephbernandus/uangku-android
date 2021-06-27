@@ -1,6 +1,7 @@
 package mobile.uangku.android.activities.goal
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +46,10 @@ class GoalFragment : Fragment() {
 
         if (Sync.isNeeded(fragmentContext, key, 60))
             syncGoal()
+
+        addGoal.setOnClickListener {
+            startActivity(Intent(fragmentContext, EditGoalActivity::class.java))
+        }
     }
 
     override fun onResume() {

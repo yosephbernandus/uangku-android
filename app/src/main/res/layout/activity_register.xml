@@ -172,8 +172,7 @@
                     android:onClick="birthdayTextViewOnClick"
                     android:hint="Enter your birthday"
                     android:paddingTop="10dp"
-                    android:paddingBottom="8dp"
-                    />
+                    android:paddingBottom="8dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -216,7 +215,7 @@
                 app:boxCornerRadiusBottomEnd="20dp"
                 app:boxCornerRadiusTopEnd="20dp"
                 app:boxCornerRadiusBottomStart="20dp"
-                app:boxCornerRadiusTopStart="20dp"
+                ap  p:boxCornerRadiusTopStart="20dp"
                 app:boxBackgroundColor="@color/white"
                 style="@style/TextInputLayoutStyle">
 
