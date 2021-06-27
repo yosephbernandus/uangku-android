@@ -87,11 +87,12 @@ class GoalFragment : Fragment() {
                 if (swipeRefreshLayout != null) swipeRefreshLayout.isRefreshing = false
                 val realm = Realm.getDefaultInstance() as Realm
 
-                realm.executeTransaction {
-                    Goal.fromJSONArray(realm, response.getJSONArray("goals"))
+                realm.executeTransactionAsync(Realm.Transaction { bgRealm ->
+                    Goal.fromJSONArray(bgRealm, response.getJSONArray("goals"))
+                }, Realm.Transaction.OnSuccess {
                     Sync.setSyncTime(fragmentContext, key)
-                }
-                setupUI()
+                    setupUI()
+                })
             }
 
             override fun onError(error: ANError) {
