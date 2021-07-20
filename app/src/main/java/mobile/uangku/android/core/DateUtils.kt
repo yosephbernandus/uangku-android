@@ -47,5 +47,9 @@ class DateUtils {
         fun convertStringToDate(date: String): Date {
             return SimpleDateFormat("yyyy-MM-dd").parse(date)
         }
+
+        fun toDateString(date: Date): String {
+            return SimpleDateFormat("dd/MMM/yyyy", Locale.US).format(date)
+        }
     }
 }
