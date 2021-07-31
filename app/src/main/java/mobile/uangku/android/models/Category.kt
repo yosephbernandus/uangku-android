@@ -13,10 +13,16 @@ open class Category : RealmObject() {
     var id: Int? = null
     var name: String? = null
     var logoUrl: String? = null
+    var isActive: Boolean = false
 
     companion object {
 
         fun fromJSONArray(realm: Realm, responses: JSONArray): RealmList<Category> {
+            for (category in realm.where(Category::class.java).findAll()) {
+                category.isActive = false
+                realm.copyToRealmOrUpdate(category)
+            }
+
             val list = RealmList<Category>()
             for (i in 0..(responses.length() - 1))
                 list.add(fromJSON(realm, responses.getJSONObject(i)))
@@ -29,6 +35,7 @@ open class Category : RealmObject() {
 
             category.id = response.getInt("id")
             category.name = response.getString("name")
+            category.isActive = true
 
             if (!response.isNull("logo_url"))
                 category.logoUrl = response.getString("logo_url")
