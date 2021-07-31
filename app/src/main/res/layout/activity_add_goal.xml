@@ -121,7 +121,6 @@
                         android:layout_height="wrap_content" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:onClick="selectDate"
                         app:hintEnabled="false"
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp"
@@ -170,6 +169,10 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="Pilih Kategori"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

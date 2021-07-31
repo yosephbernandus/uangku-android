@@ -54,29 +54,30 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/goalLayout"
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:id="@+id/goalLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/bodyLayout"-->
+<!--        android:background="@drawable/rectangle_background"-->
+<!--        android:orientation="vertical">-->
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_section"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bodyLayout"
-        android:background="@drawable/rectangle_background"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:padding="10dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/rounded_section"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+<!--    </androidx.core.widget.NestedScrollView>-->
 
 </LinearLayout>
