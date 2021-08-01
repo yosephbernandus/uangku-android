@@ -4,7 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -19,9 +20,7 @@ import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Goal
 import org.json.JSONObject
-import java.text.SimpleDateFormat
 import java.util.*
-import java.util.Locale
 
 
 class EditGoalActivity : AppCompatActivity() {
@@ -53,7 +52,36 @@ class EditGoalActivity : AppCompatActivity() {
         goalCategory.setOnClickListener {
             startActivityForResult(Intent(this, CategorySelectionActivity::class.java), CATEGORY_REQUEST_CODE)
         }
+
+//        depositCycle.setOnClickListener {
+//            val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Constants.cycles)
+//            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            depositCycle.setAdapter(dataAdapter)
+//            depositCycle.performClick()
+//        }
+
+//        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Constants.cycles)
+//        (depositCycle.text as? AutoCompleteTextView)?.setAdapter(adapter)
+
+//        depositCycleOnClick.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+//                depositCycle.setText(Constants.cycles[position])
+//            }
+//
+//            override fun onNothingSelected(parentView: AdapterView<*>) {}
+//        }
+
+
+        val adapter = ArrayAdapter(this@EditGoalActivity, R.layout.list_item, Constants.cycles)
+        depositCycle.setAdapter(adapter)
     }
+
+//    fun depositCycleOnClick(view: View) {
+//        val dataAdapter = ArrayAdapter<String>(this, R.layout.simple_spinner, Constants.cycles)
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        depositCycleOnClick.adapter = dataAdapter
+//        depositCycleOnClick.performClick()
+//    }
 
     fun syncCategories() {
         val loadingDialog = LoadingDialog(this)
