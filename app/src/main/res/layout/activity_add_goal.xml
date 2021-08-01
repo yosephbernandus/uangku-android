@@ -184,6 +184,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
+                        android:onClick="submitButtonOnClick"
                         android:textAllCaps="false"
                         app:backgroundTint="@color/darkBlue"
                         android:fontFamily="@font/poppins_semi_bold"
