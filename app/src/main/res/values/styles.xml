@@ -9,7 +9,9 @@
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">#ffffff</item>
-        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+
     </style>
 
     <style name="DateInputTextLayout" parent="Widget.MaterialComponents.TextView">

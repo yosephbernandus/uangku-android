@@ -57,7 +57,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/goalLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -73,7 +73,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
                     <TextView
                         android:paddingTop="20dp"
                         android:paddingRight="10dp"
@@ -82,7 +81,40 @@
                         android:fontFamily="@font/poppins_regular"
                         android:textSize="14sp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:text="Jumlah "
+                        android:text="Nama Tabungan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="false"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextInputLayoutStyle"
+                        app:boxBackgroundColor="#E9EFF1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:textSize="15sp"
+                            android:hint="Rumah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:id="@+id/nameTextView"
+                            android:fontFamily="@font/poppins_regular"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="Jumlah"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -98,6 +130,7 @@
 
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textSize="15sp"
                             android:hint="IDR 0.0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -132,6 +165,7 @@
 
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textSize="15sp"
                             android:hint="dd/yy/mm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -146,6 +180,43 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="Siklus Setoran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="false"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="10dp"
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="#E9EFF1">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:textSize="15sp"
+                            android:hint="Pilih Setoran"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:id="@+id/depositCycle"
+                            android:clickable="false"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:fontFamily="@font/poppins_regular"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
                         android:paddingRight="10dp"
@@ -169,6 +240,7 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textSize="15sp"
                             android:clickable="false"
                             android:cursorVisible="false"
                             android:focusable="false"
@@ -189,7 +261,7 @@
                         app:backgroundTint="@color/darkBlue"
                         android:fontFamily="@font/poppins_semi_bold"
                         android:background="@drawable/dark_blue_button"
-                        android:textSize="18dp"
+                        android:textSize="16sp"
                         android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
                         android:id="@+id/saveGoal"
@@ -198,7 +270,7 @@
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 
