@@ -3,9 +3,12 @@ package mobile.uangku.android.activities.goal
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -53,35 +56,12 @@ class EditGoalActivity : AppCompatActivity() {
             startActivityForResult(Intent(this, CategorySelectionActivity::class.java), CATEGORY_REQUEST_CODE)
         }
 
-//        depositCycle.setOnClickListener {
-//            val dataAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Constants.cycles)
-//            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            depositCycle.setAdapter(dataAdapter)
-//            depositCycle.performClick()
-//        }
-
-//        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, Constants.cycles)
-//        (depositCycle.text as? AutoCompleteTextView)?.setAdapter(adapter)
-
-//        depositCycleOnClick.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-//                depositCycle.setText(Constants.cycles[position])
-//            }
-//
-//            override fun onNothingSelected(parentView: AdapterView<*>) {}
-//        }
-
-
         val adapter = ArrayAdapter(this@EditGoalActivity, R.layout.list_item, Constants.cycles)
         depositCycle.setAdapter(adapter)
+
+        amountTextView.addTextChangedListener(NumberTextWatcherForThousand(amountTextView))
     }
 
-//    fun depositCycleOnClick(view: View) {
-//        val dataAdapter = ArrayAdapter<String>(this, R.layout.simple_spinner, Constants.cycles)
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        depositCycleOnClick.adapter = dataAdapter
-//        depositCycleOnClick.performClick()
-//    }
 
     fun syncCategories() {
         val loadingDialog = LoadingDialog(this)
@@ -170,4 +150,30 @@ class EditGoalActivity : AppCompatActivity() {
                 })
         }
     }
+
+    internal inner class NumberTextWatcherForThousand(internal var editText: EditText): TextWatcher {
+
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+
+        override fun afterTextChanged(value: Editable) {
+            editText.removeTextChangedListener(this)
+            val value = editText.text.toString()
+            val amount : Double
+            if (value.isNotEmpty()) {
+                if (value.startsWith("0") || value.startsWith(".") || value.startsWith(","))
+                    editText.setText("")
+                else {
+                    val str = editText.text.toString().replace(".", "")
+                    amount = str.toDouble()
+                    editText.setText(Utils.addThousandSeparator(amount))
+                }
+            }
+
+            editText.setSelection(editText.text.toString().length)
+            editText.addTextChangedListener(this)
+        }
+    }
+
 }
