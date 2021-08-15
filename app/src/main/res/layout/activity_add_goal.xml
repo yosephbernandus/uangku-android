@@ -163,12 +163,6 @@
                         android:layout_height="wrap_content"
                         app:boxBackgroundColor="#E9EFF1">
 
-                        <!--                            <Spinner-->
-                        <!--                                android:layout_marginTop="20dp"-->
-                        <!--                                android:id="@+id/cycleSpinner"-->
-                        <!--                                android:layout_width="match_parent"-->
-                        <!--                                android:layout_height="1dp" />-->
-
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

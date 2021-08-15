@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.EditText
@@ -29,6 +30,7 @@ import java.util.*
 class EditGoalActivity : AppCompatActivity() {
 
     lateinit var preferences: Preferences
+    var depositCycleSelection = 0
     var goalDate: Calendar = Calendar.getInstance()
     var selectedCategoryID: Int = 0
     val CATEGORY_REQUEST_CODE = 123
@@ -47,13 +49,26 @@ class EditGoalActivity : AppCompatActivity() {
 
             datePicker.addOnPositiveButtonClickListener { selection ->
                 val date = Date(selection)
-                achievmentDate.setText(DateUtils.toDateString(date))
+                achievmentDate.setText(DateUtils.toDisplayString(date))
             }
 
         }
 
         goalCategory.setOnClickListener {
             startActivityForResult(Intent(this, CategorySelectionActivity::class.java), CATEGORY_REQUEST_CODE)
+        }
+
+        // TODO Modify spinner, still using spinner use this https://stackoverflow.com/a/67198796/6859712 guide
+        // This autocomplet can't detec on Item Selected
+        // Result of depositCycle temporary still is 0 *BUG
+        depositCycle.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                depositCycleSelection = position
+                depositCycle.setText(Constants.cycles[position])
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {}
         }
 
         val adapter = ArrayAdapter(this@EditGoalActivity, R.layout.list_item, Constants.cycles)
@@ -107,7 +122,12 @@ class EditGoalActivity : AppCompatActivity() {
     }
 
     fun submitButtonOnClick(view: View) {
-        if (!Validator.validateMinLength(amountTextView, 1)) {
+        val preferences = Preferences(this)
+        if (!Validator.validateMinLength(nameTextView, 1)) {
+            Alert.dialog(this, "Mohon isi nama pendanaan anda")
+        } else if (!Validator.validateMinLength(amountTextView, 1)) {
+            Alert.dialog(this, "Mohon isi jumlah uang terlebih dahulu")
+        } else if (!Validator.validateMinLength(depositCycle, 1)) {
             Alert.dialog(this, "Mohon isi jumlah uang terlebih dahulu")
         } else if(achievmentDate.text.isNullOrEmpty()) {
             Alert.dialog(this, "Mohon isi tanggal terlebih dahulu")
@@ -117,18 +137,17 @@ class EditGoalActivity : AppCompatActivity() {
             val loadingDialog = LoadingDialog(this)
             loadingDialog.show()
 
-            // TODO: Add name and deposit cycle
-            val androidNetworking = AndroidNetworking.upload(API.getBaseURL(this) + "goals/edit-saving-goals")
+            val amount = amountTextView.text.toString().replace(".", "")
+            val androidNetworking = AndroidNetworking.upload(API.getBaseURL(this) + "goals/edit-goal")
                 .addMultipartParameter("token", API.TOKEN)
                 .addMultipartParameter("session_key", preferences.getString("sessionKey"))
                 .addMultipartParameter("category", selectedCategoryID.toString())
-                .addMultipartParameter("amount", amountTextView.text.toString())
+                .addMultipartParameter("amount", amount)
                 .addMultipartParameter("achievement_date", achievmentDate.text.toString())
-                .addMultipartParameter("name", "Rumah")
-                .addMultipartParameter("deposit_cycle", "2")
+                .addMultipartParameter("name", nameTextView.text.toString())
+                .addMultipartParameter("deposit_cycle", depositCycleSelection.toString())
 
 
-            val activity = this
             androidNetworking.setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
