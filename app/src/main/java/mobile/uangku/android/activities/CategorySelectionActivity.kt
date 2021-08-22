@@ -59,6 +59,10 @@ class CategorySelectionActivity : AppCompatActivity() {
         })
     }
 
+    fun closeIconOnClick(view: View) {
+        finish()
+    }
+
     fun setupData() {
         val query = Realm.getDefaultInstance().where(Category::class.java)
 

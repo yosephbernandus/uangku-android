@@ -30,17 +30,21 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:contentDescription="Circle"
-                        android:layout_alignParentLeft="true"
                         android:layout_width="wrap_content"
-                        app:srcCompat="@drawable/circle_shape"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:contentDescription="Circle"
+                        app:srcCompat="@drawable/circle_shape" />
 
                     <ImageView
-                        android:layout_margin="25dp"
-                        app:srcCompat="@drawable/ic_back_icon"
+                        android:onClick="closeIconOnClick"
                         android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:layout_height="20dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginBottom="25dp"
+                        app:srcCompat="@drawable/ic_back_icon" />
 
                     <TextView
                         android:textColor="@color/white"
@@ -148,7 +152,7 @@
                         android:fontFamily="@font/poppins_regular"
                         android:textSize="14sp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:text="Siklus Setoran"
+                        android:text="Periode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -164,17 +168,20 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <AutoCompleteTextView
+                            android:paddingTop="15dp"
+                            android:paddingBottom="12dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
                             android:textSize="15sp"
-                            android:hint="Pilih Setoran"
+                            android:hint="Pilih Periode"
                             android:textColor="@color/black"
                             android:id="@+id/depositCycle"
                             android:fontFamily="@font/poppins_regular"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
 
                     <TextView
                         android:paddingRight="10dp"
@@ -197,10 +204,10 @@
                         android:layout_height="wrap_content"
                         app:boxBackgroundColor="#E9EFF1">
 
-
+                        <!-- TODO: ADD DATE ICON -->
                         <com.google.android.material.textfield.TextInputEditText
                             android:textSize="15sp"
-                            android:hint="dd/yy/mm"
+                            android:hint="1 Jan 1770"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
@@ -211,6 +218,15 @@
                             android:focusableInTouchMode="false"
                             android:fontFamily="@font/poppins_regular"
                             />
+
+                        <TextView
+                            android:textColor="@color/softBlue"
+                            android:layout_marginTop="3dp"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="* Tanggal tujuan tercapai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

@@ -39,41 +39,28 @@ class EditGoalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_goal)
 
+        // TODO: FIX TO HEAVY ON CLICK
         achievmentDate.setOnClickListener {
-            val datePicker =
-                MaterialDatePicker.Builder.datePicker()
-                    .setTitleText("Select date")
-                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                    .build()
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds()).build()
             datePicker.show(supportFragmentManager, datePicker.tag)
-
             datePicker.addOnPositiveButtonClickListener { selection ->
                 val date = Date(selection)
                 achievmentDate.setText(DateUtils.toDisplayString(date))
             }
-
         }
 
         goalCategory.setOnClickListener {
             startActivityForResult(Intent(this, CategorySelectionActivity::class.java), CATEGORY_REQUEST_CODE)
         }
 
-        // TODO Modify spinner, still using spinner use this https://stackoverflow.com/a/67198796/6859712 guide
-        // This autocomplet can't detec on Item Selected
-        // Result of depositCycle temporary still is 0 *BUG
-        depositCycle.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                depositCycleSelection = position
-                depositCycle.setText(Constants.cycles[position])
-            }
-
-            override fun onNothingSelected(parentView: AdapterView<*>) {}
-        }
+        depositCycle.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, rowId ->
+            depositCycleSelection = position
+        })
 
         val adapter = ArrayAdapter(this@EditGoalActivity, R.layout.list_item, Constants.cycles)
         depositCycle.setAdapter(adapter)
-
         amountTextView.addTextChangedListener(NumberTextWatcherForThousand(amountTextView))
     }
 
