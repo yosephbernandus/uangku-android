@@ -25,7 +25,8 @@
 
             <ImageView
                 android:id="@+id/goalIcon"
-                android:padding="5dp"
+                android:layout_marginLeft="1dp"
+                android:padding="6dp"
                 android:onClick="addGoalIcon"
                 app:srcCompat="@drawable/ic_home_goal_icon"
                 android:layout_width="40dp"
@@ -89,7 +90,11 @@
                 android:layout_height="wrap_content"
                 android:text="89 hari lagi"/>
 
-            <!-- TODO Create BAR -->
+            <View
+                android:layout_marginTop="3dp"
+                android:background="@color/lineColor"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp" />
 
             <TextView
                 android:id="@+id/accumulatedSavingAmount"

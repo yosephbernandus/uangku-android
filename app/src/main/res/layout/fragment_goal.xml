@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
-                            android:padding="5dp"
+                            android:padding="6dp"
                             android:onClick="addGoalIcon"
                             app:srcCompat="@drawable/ic_bar_icon"
                             android:layout_width="40dp"

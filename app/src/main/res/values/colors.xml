@@ -29,4 +29,5 @@
     <color name="minus">#FF0000</color>
     <color name="softBlue">#327C94</color>
     <color name="darkBlue">#315A71</color>
+    <color name="lineColor">#E5E5E5</color>
 </resources>
