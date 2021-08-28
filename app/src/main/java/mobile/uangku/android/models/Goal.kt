@@ -39,7 +39,7 @@ open class Goal: RealmObject() {
             goal.amount = response.getDouble("amount")
             goal.achievementDate = DateUtils.fromDateString(response.getString("achievement_date"))
             goal.depositCycle = response.getInt("deposit_cycle")
-            if (response.has("category"))
+            if (response.has("category_id"))
                 goal.categoryId = response.getInt("category_id")
 
             if (response.has("transactions"))

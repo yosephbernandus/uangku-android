@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.facebook.drawee.view.SimpleDraweeView
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_goal.*
@@ -54,6 +55,7 @@ class GoalFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        syncGoal()
         setupUI()
     }
 
@@ -130,12 +132,13 @@ class GoalFragment : Fragment() {
             }
             holder.id = goal!!.id!!
 
-            var categoryName = ""
+            if (goal != null && goal.categoryId != null) {
+                var category = Category[goal.categoryId!!]
+                if (category != null)
+                    holder.goalIcon.setImageURI(category.logoUrl)
+            }
 
-            if (goal!!.categoryId != null)
-                categoryName = Category[goal!!.categoryId!!]!!.name.toString()
-
-            holder.textSavingGoal.text = categoryName
+            holder.textSavingGoal.text = goal.name
             holder.savingGoalAmount.text = "Rp. ${Utils.addThousandSeparator(goal.amount)}"
             holder.accumulatedSavingAmount.text = goalTransaction
             holder.percentageTotalSaving.text = percentageTotalSaving
@@ -153,6 +156,7 @@ class GoalFragment : Fragment() {
             val accumulatedSavingAmount: TextView = view.accumulatedSavingAmount
             val daysGoalComplete: TextView = view.daysGoalComplete
             val percentageTotalSaving: TextView = view.percentageTotalSaving
+            val goalIcon: SimpleDraweeView = view.goalIcon
 
             init {
                 view.setOnClickListener(this)
