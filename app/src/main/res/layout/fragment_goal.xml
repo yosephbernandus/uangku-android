@@ -64,10 +64,12 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:layout_marginRight="7dp"
+                            android:layout_marginTop="-1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
                             app:srcCompat="@drawable/ic_add_button"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp" />
+                            android:layout_width="13dp"
+                            android:layout_height="13dp" />
 
                         <TextView
                             android:layout_gravity="center"

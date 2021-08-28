@@ -195,6 +195,9 @@
                         android:layout_height="wrap_content" />
 
                     <com.google.android.material.textfield.TextInputLayout
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/tanggal_icon"
+                        app:endIconTint="#A7A7A7"
                         app:hintEnabled="false"
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp"
@@ -204,10 +207,9 @@
                         android:layout_height="wrap_content"
                         app:boxBackgroundColor="#E9EFF1">
 
-                        <!-- TODO: ADD DATE ICON -->
                         <com.google.android.material.textfield.TextInputEditText
                             android:textSize="15sp"
-                            android:hint="1 Jan 1770"
+                            android:hint="1 Jan 1970"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
