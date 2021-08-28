@@ -48,6 +48,7 @@ class DateUtils {
             return SimpleDateFormat("yyyy-MM-dd").parse(date)
         }
 
+        @JvmStatic
         fun toDateString(date: Date): String {
             return SimpleDateFormat("dd/MMM/yyyy", Locale.US).format(date)
         }
