@@ -3,6 +3,9 @@ package mobile.uangku.android.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.facebook.drawee.view.SimpleDraweeView
+import io.realm.Case
 import io.realm.Realm
 import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_category_selection.*
@@ -25,13 +29,33 @@ import org.json.JSONObject
 
 class CategorySelectionActivity : AppCompatActivity() {
     lateinit var categories: RealmResults<Category>
+    var lastModificationTime: Long = 0
+    var delay: Long = 500 // in ms
+    var handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_selection)
 
+        val inputFinish = Runnable {
+            if (System.currentTimeMillis() >= lastModificationTime + delay) {
+                setupData()
+            }
+        }
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
+
+        categorySearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(value: Editable?) {
+                if (value.isNullOrBlank()) return
+                lastModificationTime = System.currentTimeMillis()
+                handler.postDelayed(inputFinish, delay)
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
 
         syncCategory()
     }
@@ -65,6 +89,10 @@ class CategorySelectionActivity : AppCompatActivity() {
 
     fun setupData() {
         val query = Realm.getDefaultInstance().where(Category::class.java)
+
+        val key = categorySearch.text.toString()
+        if (key.length > 2)
+            query.contains("name", key, Case.INSENSITIVE)
 
         categories = query.equalTo("isActive", true).findAll().sort("name")
         recyclerView.adapter = RecyclerViewAdapter()
