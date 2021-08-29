@@ -56,19 +56,72 @@
 
             </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
 
-<!--    <androidx.core.widget.NestedScrollView-->
-<!--        android:id="@+id/goalLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/bodyLayout"-->
-<!--        android:background="@drawable/rectangle_background"-->
-<!--        android:orientation="vertical">-->
+        <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/primary"
+                    android:layout_weight="1" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/background"
+                    android:layout_weight="1.5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    app:hintEnabled="false"
+                    app:boxCornerRadiusBottomEnd="15dp"
+                    app:boxCornerRadiusTopEnd="15dp"
+                    app:boxCornerRadiusBottomStart="15dp"
+                    app:boxCornerRadiusTopStart="15dp"
+                    android:paddingRight="25dp"
+                    android:paddingLeft="25dp"
+                    android:paddingBottom="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputLayoutStyle"
+                    app:boxBackgroundColor="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/categorySearch"
+                        android:textSize="15sp"
+                        android:hint="Cari Kategori.."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_regular"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:padding="10dp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/rounded_section"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,7 +134,5 @@
 
 
     </LinearLayout>
-
-<!--    </androidx.core.widget.NestedScrollView>-->
 
 </LinearLayout>
