@@ -281,15 +281,15 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/black"
-                        android:text="Transaksi Terakhir"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Transaksi Terakhir"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_alignParentRight="true"

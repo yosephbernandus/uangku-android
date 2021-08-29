@@ -30,4 +30,7 @@
     <color name="softBlue">#327C94</color>
     <color name="darkBlue">#315A71</color>
     <color name="lineColor">#E5E5E5</color>
+    <color name="tabTextInactive">#6B6B6B</color>
+    <color name="transactionButton">#189888</color>
+    <color name="deepGreen">#2CA193</color>
 </resources>
