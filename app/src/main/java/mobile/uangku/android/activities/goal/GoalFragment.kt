@@ -65,6 +65,9 @@ class GoalFragment : Fragment() {
     }
 
     fun setupUI() {
+        if(!isAdded)
+            return
+
         val goals = Realm.getDefaultInstance().where(Goal::class.java).findAll()
         if (goals.size == 0) {
             goalsListRecyclerView.visibility = View.GONE
@@ -163,7 +166,9 @@ class GoalFragment : Fragment() {
             }
 
             override fun onClick(view: View) {
-                // TODO Add to details goal
+                val intent = Intent(fragmentContext, GoalDetailActivity::class.java)
+                intent.putExtra("id", id)
+                startActivity(intent)
             }
         }
     }
