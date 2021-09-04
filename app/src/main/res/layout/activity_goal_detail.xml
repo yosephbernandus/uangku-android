@@ -297,6 +297,7 @@
                             android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/cylceDeposit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/transactionName"
@@ -308,6 +309,7 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/addGoalTransaction"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/iconLayout"

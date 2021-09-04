@@ -41,6 +41,9 @@
             android:name=".activities.goal.GoalDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.goal.EditGoalTransactionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.CategorySelectionActivity"
             android:screenOrientation="portrait" />
     </application>

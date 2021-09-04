@@ -6,4 +6,9 @@ object Constants {
     val MINUTE = 2
     val HOURS = 3
     val DAYS = 4
+
+    val DAY = 0
+    val WEEKLY = 1
+    val MONTLY = 2
+    val YEARLY = 3
 }

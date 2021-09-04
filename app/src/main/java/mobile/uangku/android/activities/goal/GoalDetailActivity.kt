@@ -1,6 +1,8 @@
 package mobile.uangku.android.activities.goal
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
@@ -33,6 +35,12 @@ class GoalDetailActivity : AppCompatActivity() {
         }
 
         sync(true)
+
+        addGoalTransaction.setOnClickListener {
+            val intent = Intent(this, EditGoalTransactionActivity::class.java)
+            intent.putExtra("id", goal.id)
+            startActivity(intent)
+        }
     }
 
     fun sync(showLoadingDialog: Boolean = false) {
@@ -65,6 +73,10 @@ class GoalDetailActivity : AppCompatActivity() {
         })
     }
 
+    fun closeIconOnClick(view: View) {
+        finish()
+    }
+
     fun setupUI() {
         var goalTransaction = "Rp. 0 dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
         var dateFormat =  SimpleDateFormat("yyyy-MM-dd")
@@ -80,5 +92,16 @@ class GoalDetailActivity : AppCompatActivity() {
         daysAchievmentGoal.text = "${differenceTime} hari lagi"
         accumulatedSavingAmount.text = goalTransaction
         depositAmountPerCycle.text = "Rp. ${Utils.addThousandSeparator(goal.depositAmountPerCycle.toDouble())}"
+
+        val depostiCycle = goal!!.depositCycle
+        if (depostiCycle == Constants.DAY) {
+            cylceDeposit.text = "Per Hari"
+        } else if (depostiCycle == Constants.WEEKLY) {
+            cylceDeposit.text = "Per Minggu"
+        } else if (depostiCycle == Constants.MONTLY) {
+            cylceDeposit.text = "Per Bulan"
+        } else if (depostiCycle == Constants.YEARLY) {
+            cylceDeposit.text = "Per Tahun"
+        }
     }
 }

@@ -115,7 +115,7 @@ class EditGoalActivity : AppCompatActivity() {
         } else if (!Validator.validateMinLength(amountTextView, 1)) {
             Alert.dialog(this, "Mohon isi jumlah uang terlebih dahulu")
         } else if (!Validator.validateMinLength(depositCycle, 1)) {
-            Alert.dialog(this, "Mohon isi jumlah uang terlebih dahulu")
+            Alert.dialog(this, "Mohon isi siklus setoran terlebih dahulu")
         } else if(achievmentDate.text.isNullOrEmpty()) {
             Alert.dialog(this, "Mohon isi tanggal terlebih dahulu")
         } else if(selectedCategoryID == 0) {
@@ -181,5 +181,4 @@ class EditGoalActivity : AppCompatActivity() {
             editText.addTextChangedListener(this)
         }
     }
-
 }
