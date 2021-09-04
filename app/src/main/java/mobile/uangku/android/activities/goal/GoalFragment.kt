@@ -75,7 +75,7 @@ class GoalFragment : Fragment() {
         }
 
         goalsListRecyclerView.visibility = View.VISIBLE
-        totalAmountSavings.text = "Rp. ${Utils.addThousandSeparator(goals.where().sum("amount").toDouble())}"
+        totalAmountSavings.text = "Rp. ${Utils.addThousandSeparator(Goal.amountSavings(goals))}"
         goalsListRecyclerView.adapter = RecyclerViewAdapter(goals)
         goalsListRecyclerView.layoutManager = LinearLayoutManager(fragmentContext)
         goalsListRecyclerView.isNestedScrollingEnabled = false

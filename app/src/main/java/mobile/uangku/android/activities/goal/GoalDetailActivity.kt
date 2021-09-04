@@ -23,7 +23,6 @@ class GoalDetailActivity : AppCompatActivity() {
     lateinit var goal: Goal
     lateinit var goalTransaction: RealmResults<GoalTransaction>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goal_detail)
@@ -80,5 +79,6 @@ class GoalDetailActivity : AppCompatActivity() {
         goalName.text = goal.name
         daysAchievmentGoal.text = "${differenceTime} hari lagi"
         accumulatedSavingAmount.text = goalTransaction
+        depositAmountPerCycle.text = "Rp. ${Utils.addThousandSeparator(goal.depositAmountPerCycle.toDouble())}"
     }
 }

@@ -3,6 +3,7 @@ package mobile.uangku.android.models
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmObject
+import io.realm.RealmResults
 import io.realm.annotations.PrimaryKey
 import mobile.uangku.android.core.DateUtils
 import org.json.JSONArray
@@ -19,7 +20,9 @@ open class Goal: RealmObject() {
     var amount: Double = 0.0
     var name: String? = null
     var depositCycle: Int = 0
+    var depositAmountPerCycle: Double = 0.0
     var transactions: RealmList<GoalTransaction>? = null
+    var goals: RealmList<Goal>? = null
 
     companion object {
 
@@ -39,6 +42,8 @@ open class Goal: RealmObject() {
             goal.amount = response.getDouble("amount")
             goal.achievementDate = DateUtils.fromDateString(response.getString("achievement_date"))
             goal.depositCycle = response.getInt("deposit_cycle")
+            goal.depositAmountPerCycle = response.getDouble("deposit_amount_per_cycle")
+
             if (response.has("category_id"))
                 goal.categoryId = response.getInt("category_id")
 
@@ -51,6 +56,16 @@ open class Goal: RealmObject() {
 
         operator fun get(id: Int): Goal? {
             return Realm.getDefaultInstance().where(Goal::class.java).equalTo("id", id).findFirst()
+        }
+
+        fun amountSavings(goals: RealmResults<Goal>): Double {
+            var amountSavings = 0.0
+            for (goal in goals) {
+                if (goal.transactions != null) {
+                    amountSavings += goal.transactions!!.where().sum("amount").toDouble()
+                }
+            }
+            return amountSavings
         }
 
         enum class Cycle(val value: String) {

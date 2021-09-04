@@ -241,9 +241,12 @@
                     android:textSize="12sp" />
 
                 <RelativeLayout
-                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
                     android:background="@drawable/rounded_section"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="25dp"
                     android:layout_width="match_parent"
@@ -260,68 +263,69 @@
                         android:padding="7dp">
 
                         <ImageView
-                            app:srcCompat="@drawable/ic_check"
+                            app:srcCompat="@drawable/target_white"
                             android:layout_width="30dp"
                             android:layout_height="30dp"/>
 
                     </LinearLayout>
 
                     <RelativeLayout
-                        android:layout_toRightOf="@id/iconLayout"
-                        android:padding="7dp"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iconLayout"
+                        android:orientation="vertical"
+                        android:padding="7dp">
 
                         <TextView
                             android:id="@+id/transactionName"
-                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_regular"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Setoran Tabungan"/>
+                            android:text="Setoran Tabungan"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
 
                         <TextView
+                            android:id="@+id/depositAmountPerCycle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:textColor="@color/linkSection"
                             android:fontFamily="@font/poppins_bold"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. 250.000"/>
+                            android:text="Rp. 250.000"
+                            android:textColor="@color/linkSection"
+                            android:textSize="12sp" />
 
                         <TextView
-                            android:layout_marginTop="3dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/transactionName"
+                            android:layout_marginTop="3dp"
                             android:fontFamily="@font/poppins_light"
-                            android:text="02 Mei 2021"
+                            android:text="Per Bulan"
                             android:textColor="@color/black"
                             android:textSize="10sp" />
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="4dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/iconLayout"
-                        android:orientation="vertical"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/iconLayout"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/tab_background"
-                        android:backgroundTint="@color/transactionButton">
+                        android:backgroundTint="@color/transactionButton"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/poppins_regular"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Tambah Setoran"
                             android:textAlignment="center"
-                            android:text="Tambah"/>
+                            android:textColor="@color/white"
+                            android:textSize="11sp" />
 
                     </LinearLayout>
                 </RelativeLayout>
