@@ -91,7 +91,7 @@ class GoalDetailActivity : AppCompatActivity() {
         goalName.text = goal.name
         daysAchievmentGoal.text = "${differenceTime} hari lagi"
         accumulatedSavingAmount.text = goalTransaction
-        depositAmountPerCycle.text = "Rp. ${Utils.addThousandSeparator(goal.depositAmountPerCycle.toDouble())}"
+        depositAmountPerCycle.text = "Rp. ${Utils.addThousandSeparator(goal.depositAmountPerCycle)}"
 
         val depostiCycle = goal!!.depositCycle
         if (depostiCycle == Constants.DAY) {

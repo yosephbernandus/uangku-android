@@ -22,8 +22,12 @@ import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Goal
 import org.json.JSONObject
+import java.lang.Math.round
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToLong
 
 class GoalFragment : Fragment() {
 
@@ -51,6 +55,28 @@ class GoalFragment : Fragment() {
         addGoal.setOnClickListener {
             startActivity(Intent(fragmentContext, EditGoalActivity::class.java))
         }
+        syncCategory()
+    }
+
+    fun syncCategory() {
+        val loadingDialog = LoadingDialog(fragmentContext)
+        loadingDialog.show()
+
+        val request = API.createGetRequest(fragmentContext, "categories", null)
+        request.getAsJSONObject(object : JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject) {
+                loadingDialog.dismissIfNeeded()
+                val realm = Realm.getDefaultInstance()
+                realm.executeTransactionAsync{ bgRealm ->
+                    Category.fromJSONArray(bgRealm, response.getJSONArray("categories"))
+                }
+            }
+
+            override fun onError(error: ANError) {
+                loadingDialog.dismissIfNeeded()
+                API.handleErrorResponse(fragmentContext, error)
+            }
+        })
     }
 
     override fun onResume() {
@@ -130,8 +156,14 @@ class GoalFragment : Fragment() {
             var differenceTime = Utils.getDifferenceTime((achievementDate - currentDate), Constants.DAYS)
 
             if (goal!!.transactions != null){
-                goalTransaction = "Rp. ${Utils.addThousandSeparator(goal!!.transactions!!.where().sum("amount").toDouble())} dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
-                percentageTotalSaving = "${(((goal!!.transactions!!.where().sum("amount").toDouble() / goal.amount) * 100).toString())} %"
+                val transactionAmount = goal!!.transactions!!.where().sum("amount").toDouble()
+                goalTransaction = "Rp. ${Utils.addThousandSeparator(transactionAmount)} dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
+                var percentage = ((goal!!.transactions!!.where().sum("amount").toDouble() / goal.amount) * 100)
+                percentageTotalSaving = "${BigDecimal(percentage).setScale(2, RoundingMode.HALF_EVEN)} %"
+
+                if (transactionAmount >= goal!!.amount)
+                    percentageTotalSaving = "100 %"
+
             }
             holder.id = goal!!.id!!
 
