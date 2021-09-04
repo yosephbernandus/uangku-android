@@ -199,6 +199,7 @@ class GoalFragment : Fragment() {
 
             override fun onClick(view: View) {
                 val intent = Intent(fragmentContext, GoalDetailActivity::class.java)
+                intent.putExtra("tab", "details")
                 intent.putExtra("id", id)
                 startActivity(intent)
             }

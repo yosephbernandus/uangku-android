@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/rounded_section"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@id/iconLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/background_transaction_icon"
+                android:orientation="vertical"
+                android:padding="7dp">
+
+                <ImageView
+                    app:srcCompat="@drawable/ic_check"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iconLayout"
+                android:orientation="vertical"
+                android:padding="7dp">
+
+                <TextView
+                    android:id="@+id/titleTransaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Setoran Tabungan"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/amountSavingsTransaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Rp. 250.000"
+                    android:textColor="@color/linkSection"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/transactionCreated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleTransaction"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="02 Mei 2021"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iconLayout"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/tab_background"
+                android:backgroundTint="@color/transactionButton"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Edit"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

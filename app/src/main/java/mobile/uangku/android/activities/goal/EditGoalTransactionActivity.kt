@@ -11,12 +11,10 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
-import io.realm.Realm
-import kotlinx.android.synthetic.main.acitivity_add_goal_transaction.*
+import kotlinx.android.synthetic.main.activity_add_goal_transaction.*
 import mobile.uangku.android.R
 import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Goal
-import mobile.uangku.android.models.GoalTransaction
 import org.json.JSONObject
 
 class EditGoalTransactionActivity : AppCompatActivity() {
@@ -25,7 +23,7 @@ class EditGoalTransactionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.acitivity_add_goal_transaction)
+        setContentView(R.layout.activity_add_goal_transaction)
 
         goal = Goal.get(intent.getIntExtra("id", 0))!!
 
