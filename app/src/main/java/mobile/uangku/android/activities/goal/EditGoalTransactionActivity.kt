@@ -11,6 +11,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add_goal_transaction.*
 import mobile.uangku.android.R
 import mobile.uangku.android.core.*
@@ -51,8 +52,13 @@ class EditGoalTransactionActivity : AppCompatActivity() {
                 .getAsJSONObject(object: JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
                         loadingDialog.dismissIfNeeded()
-                        setResult(Activity.RESULT_OK)
-                        finish()
+                        val realm = Realm.getDefaultInstance()
+                        realm.executeTransactionAsync(Realm.Transaction{ bgRealm ->
+                            Goal.fromJSON(bgRealm, response)
+                        }, Realm.Transaction.OnSuccess {
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        })
                     }
 
                     override fun onError(error: ANError) {
