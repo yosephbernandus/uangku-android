@@ -80,27 +80,6 @@
                     android:textSize="10sp" />
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/iconLayout"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/tab_background"
-                android:backgroundTint="@color/transactionButton"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Edit"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
