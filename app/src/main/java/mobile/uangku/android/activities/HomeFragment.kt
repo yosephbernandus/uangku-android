@@ -28,6 +28,10 @@ class HomeFragment : Fragment() {
         goalSavingsOnClick.setOnClickListener {
             (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.savings_tab
         }
+
+        logTransactionOnClick.setOnClickListener {
+            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.transactions_tab
+        }
     }
 
     override fun onAttach(context: Context) {

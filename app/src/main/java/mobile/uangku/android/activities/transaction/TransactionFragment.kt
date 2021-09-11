@@ -5,16 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.facebook.drawee.view.SimpleDraweeView
 import io.realm.Realm
+import io.realm.RealmResults
 import kotlinx.android.synthetic.main.fragment_goal.*
+import kotlinx.android.synthetic.main.fragment_goal.swipeRefreshLayout
+import kotlinx.android.synthetic.main.fragment_transaction.*
+import kotlinx.android.synthetic.main.transaction_item.view.*
 import mobile.uangku.android.R
-import mobile.uangku.android.core.API
-import mobile.uangku.android.core.LoadingDialog
-import mobile.uangku.android.core.Preferences
-import mobile.uangku.android.core.Sync
+import mobile.uangku.android.activities.goal.GoalFragment
+import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Transaction
 import org.json.JSONObject
@@ -36,7 +42,12 @@ class TransactionFragment : Fragment() {
 
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = true
+            syncTransaction()
         }
+
+        if (Sync.isNeeded(fragmentContext, key, 60))
+            syncTransaction()
+
         syncCategory()
     }
 
@@ -93,7 +104,78 @@ class TransactionFragment : Fragment() {
         })
     }
 
-    fun setupUI(){
+    override fun onResume() {
+        super.onResume()
+        syncTransaction()
+        setupUI()
+    }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentContext = context!!
+    }
+
+    fun setupUI(){
+        if(!isAdded)
+            return
+
+        val transactions = Realm.getDefaultInstance().where(Transaction::class.java).findAll()
+        if (transactions.size == 0) {
+            transactionListRecylerView.visibility = View.GONE
+            return
+        }
+
+        transactionListRecylerView.visibility = View.VISIBLE
+        transactionListRecylerView.adapter = RecyclerViewAdapter(transactions)
+        transactionListRecylerView.layoutManager = LinearLayoutManager(fragmentContext)
+        transactionListRecylerView.isNestedScrollingEnabled = false
+    }
+
+    internal inner class RecyclerViewAdapter(var transactions: RealmResults<Transaction>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.transaction_item, parent, false))
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val transaction = transactions[position]
+
+            var created = transaction!!.created
+            var name = transaction!!.name
+            var amount = transaction!!.amount
+
+            if (transaction != null && transaction.categoryId != null) {
+                var category = Category[transaction.categoryId!!]
+                if (category != null)
+                    holder.transactionCategoryIcon.setImageURI(category.logoUrl)
+            }
+
+            holder.textMonthDate.text = DateUtils.toDisplayStringMonth(created!!)
+            holder.textTransactionName.text = name
+            holder.textTransactionAmount.text = "Rp. ${Utils.addThousandSeparator(amount)}"
+            holder.textTransactionCreated.text = DateUtils.toDisplayString(created!!)
+        }
+
+        override fun getItemCount(): Int {
+            return transactions.size
+        }
+
+        internal inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+            var id = 0
+            val textMonthDate: TextView = view.textMonthDate
+            val textTransactionName: TextView = view.textTransactionName
+            val textTransactionCreated: TextView = view.textTransactionCreated
+            val textTransactionAmount: TextView = view.textTransactionAmount
+            val transactionCategoryIcon: SimpleDraweeView = view.transactionCategoryIcon
+
+            init {
+                view.setOnClickListener(this)
+            }
+
+            override fun onClick(v: View) {
+                TODO("Not yet implemented")
+            }
+
+        }
     }
 }

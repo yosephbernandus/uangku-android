@@ -10,6 +10,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_tab.*
 import mobile.uangku.android.R
 import mobile.uangku.android.activities.goal.GoalFragment
+import mobile.uangku.android.activities.transaction.TransactionFragment
 
 class TabActivity : AppCompatActivity() {
 
@@ -23,6 +24,7 @@ class TabActivity : AppCompatActivity() {
 
             if (menuItemSelectedID == R.id.home_tab) fragment = HomeFragment()
             else if (menuItemSelectedID == R.id.savings_tab) fragment = GoalFragment()
+            else if (menuItemSelectedID == R.id.transactions_tab) fragment = TransactionFragment()
             else fragment = SettingsFragment()
 
             val fragmentTransaction = supportFragmentManager.beginTransaction()

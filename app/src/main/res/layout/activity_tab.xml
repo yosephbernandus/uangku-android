@@ -16,12 +16,12 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:elevation="5dp"
             android:layout_alignParentBottom="true"
+            android:elevation="5dp"
+            app:backgroundTint="@color/white"
             app:itemBackground="@color/white"
             app:itemIconTint="@color/tab_selector"
             app:itemTextColor="@color/tab_selector"
-            app:backgroundTint="@color/white"
             app:menu="@menu/bottom_navigation" />
 
     </LinearLayout>
