@@ -38,6 +38,7 @@ open class Transaction: RealmObject() {
             transaction.amount = response.getDouble("amount")
             transaction.notes = response.getString("notes")
             transaction.created = DateUtils.fromDateString(response.getString("created"))
+            transaction.type = response.getInt("type")
 
             if (response.has("category_id"))
                 transaction.categoryId = response.getInt("category_id")
@@ -48,6 +49,23 @@ open class Transaction: RealmObject() {
 
         operator fun get(id: Int): Transaction? {
             return Realm.getDefaultInstance().where(Transaction::class.java).equalTo("id", id).findFirst()
+        }
+    }
+
+    enum class Type(val value: String) {
+        NULL("null"),
+        INCOME("Pemasukan"),
+        OUTCOME("Pengeluaran");
+
+        companion object {
+
+            fun getStringValue(index: Int): String {
+                return getValue(index).value
+            }
+
+            fun getValue(index: Int): Type {
+                return values()[index]
+            }
         }
     }
 }

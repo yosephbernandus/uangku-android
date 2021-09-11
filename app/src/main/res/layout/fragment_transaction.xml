@@ -143,6 +143,7 @@
                                 android:text="Pendapatan"/>
 
                             <TextView
+                                android:id="@+id/textIncomeAmount"
                                 android:layout_gravity="center"
                                 android:textColor="@color/linkSection"
                                 android:textSize="13sp"
@@ -182,6 +183,7 @@
                                 android:text="Pengeluaran"/>
 
                             <TextView
+                                android:id="@+id/textOutcomeAmount"
                                 android:layout_gravity="center"
                                 android:textColor="@color/minus"
                                 android:textSize="13sp"

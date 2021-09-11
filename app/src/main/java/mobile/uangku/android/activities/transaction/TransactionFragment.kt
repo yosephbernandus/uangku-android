@@ -14,12 +14,10 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.facebook.drawee.view.SimpleDraweeView
 import io.realm.Realm
 import io.realm.RealmResults
-import kotlinx.android.synthetic.main.fragment_goal.*
 import kotlinx.android.synthetic.main.fragment_goal.swipeRefreshLayout
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import kotlinx.android.synthetic.main.transaction_item.view.*
 import mobile.uangku.android.R
-import mobile.uangku.android.activities.goal.GoalFragment
 import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Transaction
@@ -120,11 +118,18 @@ class TransactionFragment : Fragment() {
             return
 
         val transactions = Realm.getDefaultInstance().where(Transaction::class.java).findAll()
+        val incomeAmount = transactions.where().equalTo("type", Transaction.Type.INCOME.ordinal)
+            .findAll().sum("amount")
+        val outcomeAmount = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
+            .findAll().sum("amount")
+
         if (transactions.size == 0) {
             transactionListRecylerView.visibility = View.GONE
             return
         }
 
+        textIncomeAmount.text = "Rp. ${Utils.addThousandSeparator(incomeAmount.toDouble())}"
+        textOutcomeAmount.text = "Rp. ${Utils.addThousandSeparator(outcomeAmount.toDouble())}"
         transactionListRecylerView.visibility = View.VISIBLE
         transactionListRecylerView.adapter = RecyclerViewAdapter(transactions)
         transactionListRecylerView.layoutManager = LinearLayoutManager(fragmentContext)
