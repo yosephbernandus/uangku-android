@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_add_transaction.*
 import kotlinx.android.synthetic.main.activity_add_transaction.amountTextView
 import kotlinx.android.synthetic.main.activity_add_transaction.nameTextView
 import mobile.uangku.android.R
+import mobile.uangku.android.activities.CategorySelectionActivity
 import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Transaction
 import org.json.JSONObject
@@ -35,6 +36,10 @@ class EditTransactionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_transaction)
+
+        transactionCategory.setOnClickListener {
+            startActivityForResult(Intent(this, CategorySelectionActivity::class.java), CATEGORY_REQUEST_CODE)
+        }
 
         incomeTab.setOnClickListener {
             type = Transaction.Type.INCOME.ordinal
