@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mobile.uangku.android.core.CustomSwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:id="@+id/swipeRefreshLayout">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:background="@color/primary"
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:contentDescription="Circle"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="wrap_content"
+                        app:srcCompat="@drawable/circle_shape"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:layout_margin="25dp"
+                        android:onClick="backIconOnClick"
+                        app:srcCompat="@drawable/ic_back_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/statusText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="100dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Catat Transaksi"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:id="@+id/addGoal"
+                        android:layout_alignParentRight="true"
+                        android:padding="10dp"
+                        android:background="@drawable/button_rounded_section"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_marginTop="-1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="6dp"
+                            app:srcCompat="@drawable/ic_add_button"
+                            android:layout_width="13dp"
+                            android:layout_height="13dp" />
+
+                        <TextView
+                            android:layout_gravity="center"
+                            android:textColor="@color/softBlue"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Set Transaksi"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/primary"
+                        android:layout_weight="1" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/background"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:id="@+id/moneySaving"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_section"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/detailTab"
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/detailTabText"
+                                android:layout_gravity="center"
+                                android:textColor="#808080"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:text="Pendapatan"/>
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:textColor="@color/linkSection"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:text="Rp. 0"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_section"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:padding="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:textColor="#808080"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:text="Pengeluaran"/>
+
+                            <TextView
+                                android:layout_gravity="center"
+                                android:textColor="@color/minus"
+                                android:textSize="13sp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:text="Rp. 0"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/goalLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/bodyLayout"
+                android:background="@drawable/rectangle_background"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/filterLayout"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Tampilkan Semua"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_marginTop="7dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_below="@id/filterLayout"
+                    android:id="@+id/transactionListRecylerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</mobile.uangku.android.core.CustomSwipeRefreshLayout>

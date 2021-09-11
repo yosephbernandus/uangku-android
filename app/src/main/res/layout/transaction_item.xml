@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:background="@drawable/rounded_section"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Juni 2021"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_below="@id/month"
+            android:id="@id/iconLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:padding="7dp"
+            android:background="@drawable/icon_background"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:padding="6dp"
+                android:id="@+id/goalIcon"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/month"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iconLayout"
+            android:orientation="vertical"
+            android:padding="7dp">
+
+            <TextView
+                android:id="@+id/textSavingGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Bayar Internet"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textSavingGoal"
+                android:fontFamily="@font/poppins_regular"
+                android:text="06 Juni 2021"
+                android:textColor="#808080"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/percentageTotalSaving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textSavingGoal"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="+ Rp. 0"
+                android:textColor="@color/linkSection"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>
