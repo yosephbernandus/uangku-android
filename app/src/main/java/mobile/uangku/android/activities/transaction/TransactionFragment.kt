@@ -1,6 +1,7 @@
 package mobile.uangku.android.activities.transaction
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,9 @@ class TransactionFragment : Fragment() {
         if (Sync.isNeeded(fragmentContext, key, 60))
             syncTransaction()
 
+        addTransaction.setOnClickListener {
+            startActivity(Intent(fragmentContext, EditTransactionActivity::class.java))
+        }
         syncCategory()
     }
 

@@ -62,6 +62,7 @@ class EditGoalActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this@EditGoalActivity, R.layout.list_item, Constants.cycles)
         depositCycle.setAdapter(adapter)
         amountTextView.addTextChangedListener(NumberTextWatcherForThousand(amountTextView))
+        syncCategories()
     }
 
 
