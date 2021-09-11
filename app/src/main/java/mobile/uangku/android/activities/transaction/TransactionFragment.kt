@@ -152,6 +152,7 @@ class TransactionFragment : Fragment() {
             var created = transaction!!.created
             var name = transaction!!.name
             var amount = transaction!!.amount
+            var type = transaction!!.type
 
             if (transaction != null && transaction.categoryId != null) {
                 var category = Category[transaction.categoryId!!]
@@ -161,7 +162,13 @@ class TransactionFragment : Fragment() {
 
             holder.textMonthDate.text = DateUtils.toDisplayStringMonth(created!!)
             holder.textTransactionName.text = name
-            holder.textTransactionAmount.text = "Rp. ${Utils.addThousandSeparator(amount)}"
+            if (type == Transaction.Type.INCOME.ordinal) {
+                holder.textTransactionAmount.text = "+ Rp. ${Utils.addThousandSeparator(amount)}"
+                holder.textTransactionAmount.setTextColor(resources.getColor(R.color.linkSection))
+            } else {
+                holder.textTransactionAmount.text = "- Rp. ${Utils.addThousandSeparator(amount)}"
+                holder.textTransactionAmount.setTextColor(resources.getColor(R.color.minus))
+            }
             holder.textTransactionCreated.text = DateUtils.toDisplayString(created!!)
         }
 
