@@ -228,10 +228,11 @@
                         android:textSize="12sp" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_marginTop="7dp"
-                        android:layout_alignParentRight="true"
+                        android:id="@+id/showAllTransaction"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="7dp" />
 
                 </RelativeLayout>
 

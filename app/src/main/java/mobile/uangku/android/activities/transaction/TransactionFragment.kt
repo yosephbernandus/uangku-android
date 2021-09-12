@@ -23,15 +23,23 @@ import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Transaction
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.*
 
 class TransactionFragment : Fragment() {
 
     lateinit var preferences: Preferences
     lateinit var fragmentContext: Context
+    lateinit var transactions: RealmResults<Transaction>
+    var currentDate: Calendar = Calendar.getInstance()
+    var firstDate: Calendar = Calendar.getInstance()
 
     val key ="transactions"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // this takes current date and first date from current month
+        firstDate[Calendar.DAY_OF_MONTH] = 1
         return inflater.inflate(R.layout.fragment_transaction, container, false)
     }
 
@@ -50,6 +58,22 @@ class TransactionFragment : Fragment() {
         addTransaction.setOnClickListener {
             startActivity(Intent(fragmentContext, EditTransactionActivity::class.java))
         }
+
+        transactions = Realm.getDefaultInstance().where(Transaction::class.java).greaterThanOrEqualTo("created", firstDate.time)
+            .lessThanOrEqualTo("created", currentDate.time).findAll()
+
+        showAllTransaction.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked){
+                transactions = Realm.getDefaultInstance().where(Transaction::class.java).findAll()
+                setupUI()
+            }
+            else {
+                transactions = Realm.getDefaultInstance().where(Transaction::class.java).greaterThanOrEqualTo("created", firstDate.time)
+                    .lessThanOrEqualTo("created", currentDate.time).findAll()
+                setupUI()
+            }
+        }
+
         syncCategory()
     }
 
@@ -121,7 +145,6 @@ class TransactionFragment : Fragment() {
         if(!isAdded)
             return
 
-        val transactions = Realm.getDefaultInstance().where(Transaction::class.java).findAll()
         val incomeAmount = transactions.where().equalTo("type", Transaction.Type.INCOME.ordinal)
             .findAll().sum("amount")
         val outcomeAmount = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
