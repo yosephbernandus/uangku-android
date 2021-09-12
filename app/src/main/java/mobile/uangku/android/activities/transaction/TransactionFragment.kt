@@ -160,6 +160,7 @@ class TransactionFragment : Fragment() {
                     holder.transactionCategoryIcon.setImageURI(category.logoUrl)
             }
 
+            holder.id = transaction!!.id!!
             holder.textMonthDate.text = DateUtils.toDisplayStringMonth(created!!)
             holder.textTransactionName.text = name
             if (type == Transaction.Type.INCOME.ordinal) {
@@ -189,7 +190,9 @@ class TransactionFragment : Fragment() {
             }
 
             override fun onClick(v: View) {
-                TODO("Not yet implemented")
+                val intent = Intent(fragmentContext, DetailTransactionActivity::class.java)
+                intent.putExtra("id", id)
+                startActivity(intent)
             }
 
         }

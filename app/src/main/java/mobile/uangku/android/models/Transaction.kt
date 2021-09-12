@@ -54,8 +54,8 @@ open class Transaction: RealmObject() {
 
     enum class Type(val value: String) {
         NULL("null"),
-        INCOME("Pemasukan"),
-        OUTCOME("Pengeluaran");
+        INCOME("INCOME"),
+        OUTCOME("OUTCOME");
 
         companion object {
 

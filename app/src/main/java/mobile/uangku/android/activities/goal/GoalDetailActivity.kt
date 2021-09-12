@@ -181,18 +181,10 @@ class GoalDetailActivity : AppCompatActivity() {
             holder.created.text = created
         }
 
-        internal inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+        internal inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
             var id = 0
             val amountSavings: TextView = view.amountSavingsTransaction
             val created: TextView = view.transactionCreated
-
-            init {
-                view.setOnClickListener(this)
-            }
-
-            override fun onClick(v: View?) {
-                TODO("Not yet implemented")
-            }
         }
 
         override fun getItemCount(): Int {

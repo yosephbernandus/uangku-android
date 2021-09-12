@@ -111,7 +111,7 @@
 
                             <com.facebook.drawee.view.SimpleDraweeView
                                 android:padding="6dp"
-                                android:id="@+id/goalIcon"
+                                android:id="@+id/transactionIcon"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp" />
 
@@ -193,24 +193,24 @@
                                 android:textSize="10sp" />
 
                             <TextView
-                                android:layout_below="@id/titleTotalTransaction"
                                 android:id="@+id/transactionDetailAmount"
-                                android:paddingTop="10dp"
-                                android:textColor="@color/black"
-                                android:fontFamily="@font/poppins_bold"
-                                android:textSize="10sp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Rp 500.000"/>
+                                android:layout_below="@id/titleTotalTransaction"
+                                android:fontFamily="@font/poppins_bold"
+                                android:paddingTop="10dp"
+                                android:text="Rp 500.000"
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/textType"
-                                android:paddingRight="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:fontFamily="@font/poppins_bold"
                                 android:paddingTop="10dp"
+                                android:paddingRight="5dp"
                                 android:text="INCOME"
                                 android:textColor="@color/linkSection"
                                 android:textSize="10sp" />
