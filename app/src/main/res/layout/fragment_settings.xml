@@ -223,7 +223,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_bold"
                             android:text="Logout"
-                            android:textColor="@color/primary"
+                            android:textColor="@color/darkBlue"
                             android:textSize="14sp" />
                         />
 
