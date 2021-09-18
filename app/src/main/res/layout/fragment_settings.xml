@@ -183,6 +183,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/changePassword"
                     android:padding="10dp"
                     android:background="@drawable/rounded_section"
                     android:layout_marginTop="20dp"
@@ -198,12 +199,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="14sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ganti Password"/>
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Ganti Password"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
                         />
 
                         <ImageView
@@ -217,6 +218,7 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/logoutLayout"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
                     android:padding="10dp"
@@ -228,7 +230,6 @@
                     android:layout_height="match_parent">
 
                     <RelativeLayout
-                        android:id="@+id/logoutLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

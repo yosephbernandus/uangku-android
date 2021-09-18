@@ -26,6 +26,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener
 import kotlinx.android.synthetic.main.fragment_settings.*
 import com.google.android.material.snackbar.Snackbar
 import mobile.uangku.android.R
+import mobile.uangku.android.activities.auth.ChangePasswordActivity
 import mobile.uangku.android.core.*
 import org.json.JSONObject
 import java.io.File
@@ -55,6 +56,10 @@ class SettingsFragment : Fragment() {
         // TODO: add import image from gallery
         profilePhoto.setOnClickListener {
             openCaptureOption(PHOTO_PROFILE)
+        }
+
+        changePassword.setOnClickListener {
+            startActivity(Intent(fragmentContext, ChangePasswordActivity::class.java))
         }
 
         logoutLayout.setOnClickListener {

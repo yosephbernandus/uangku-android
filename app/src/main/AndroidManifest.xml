@@ -52,6 +52,9 @@
         <activity
             android:name=".activities.CategorySelectionActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.auth.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
