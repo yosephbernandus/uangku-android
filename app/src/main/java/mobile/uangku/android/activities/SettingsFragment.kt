@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -54,6 +55,30 @@ class SettingsFragment : Fragment() {
         // TODO: add import image from gallery
         profilePhoto.setOnClickListener {
             openCaptureOption(PHOTO_PROFILE)
+        }
+
+        logoutLayout.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(fragmentContext)
+            alertDialog.setMessage("Anda yakin akan keluar?")
+            alertDialog.setPositiveButton("Ya") { _, _ ->
+                val loadingDialog = LoadingDialog(fragmentContext)
+                loadingDialog.show()
+
+                val request = API.createPostRequest(fragmentContext, "auth/logout", null)
+                request.getAsJSONObject(object : JSONObjectRequestListener {
+                    override fun onResponse(response: JSONObject) {
+                        loadingDialog.dismissIfNeeded()
+                        Session.clear(fragmentContext)
+                    }
+
+                    override fun onError(error: ANError) {
+                        API.handleErrorResponse(fragmentContext, error)
+                        loadingDialog.dismissIfNeeded()
+                    }
+                })
+            }
+            alertDialog.setNegativeButton("Batal", null)
+            alertDialog.show()
         }
 
     }
