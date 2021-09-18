@@ -97,7 +97,21 @@
                             android:layout_width="120dp"
                             android:layout_height="120dp">
 
+                            <RelativeLayout
+                                android:id="@+id/placeholderProfilePhoto"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:background="@drawable/user_circle_background">
+
+                                <ImageView
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/user_circle_grey" />
+                            </RelativeLayout>
+
                             <com.facebook.drawee.view.SimpleDraweeView
+                                android:visibility="gone"
                                 android:id="@+id/photo"
                                 android:layout_width="120dp"
                                 android:layout_height="120dp"
