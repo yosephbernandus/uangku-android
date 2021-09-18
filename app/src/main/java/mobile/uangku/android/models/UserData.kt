@@ -74,4 +74,14 @@ object UserData {
     fun setAddress(context: Context, address: String) {
         Preferences(context)["address"] = address
     }
+
+    fun getUserPhotoUrl(context: Context): String? {
+        val preferences = Preferences(context)
+        if (preferences.has("photoUrl")) return preferences.getString("photoUrl")
+        return null
+    }
+
+    fun setUserPhotoUrl(context: Context, userPhotoUrl: String) {
+        Preferences(context)["photoUrl"] = userPhotoUrl
+    }
 }

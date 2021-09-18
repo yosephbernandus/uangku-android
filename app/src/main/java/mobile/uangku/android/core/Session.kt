@@ -53,5 +53,7 @@ object Session {
         UserData.setGender(context, userDataJSON.getInt("gender"))
         UserData.setBirthday(context, userDataJSON.getString("birthday"))
         UserData.setAddress(context, userDataJSON.getString("address"))
+        if (!userDataJSON.isNull("photoUrl"))
+            UserData.setUserPhotoUrl(context, userDataJSON.getString("photoUrl"))
     }
 }
