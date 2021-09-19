@@ -44,27 +44,46 @@
                         android:fontFamily="@font/poppins_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Status Keuangan"/>
+                        android:text="Pemasukan Bulan ini"/>
 
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_below="@id/statusText"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginLeft="50dp"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/poppins_semi_bold"
+                        android:id="@+id/incomeMonthAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="RP 7.500.000"/>
+                        android:layout_below="@id/statusText"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/poppins_semi_bold"
+                        android:text="Rp. 7.500.000"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/photo"
+
+                    <RelativeLayout
                         android:layout_alignParentRight="true"
-                        app:roundAsCircle="true"
+                        android:id="@+id/placeholderProfilePhoto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="20dp"
+                        android:background="@drawable/user_circle_background">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerInParent="true"
+                            app:srcCompat="@drawable/user_circle_grey" />
+                    </RelativeLayout>
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:visibility="gone"
+                        android:id="@+id/photo"
                         android:layout_width="70dp"
-                        android:layout_height="70dp" />
+                        android:layout_height="70dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        app:roundAsCircle="true" />
 
 
                 </RelativeLayout>

@@ -7,7 +7,7 @@
         android:icon="@drawable/home_icon"
         app:showAsAction="always" />
     <item
-        android:id="@+id/history_tab"
+        android:id="@+id/chart_tab"
         android:title="History"
         android:icon="@drawable/statistic_icon"
         app:showAsAction="always" />

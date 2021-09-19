@@ -25,6 +25,7 @@ class TabActivity : AppCompatActivity() {
             if (menuItemSelectedID == R.id.home_tab) fragment = HomeFragment()
             else if (menuItemSelectedID == R.id.savings_tab) fragment = GoalFragment()
             else if (menuItemSelectedID == R.id.transactions_tab) fragment = TransactionFragment()
+            else if (menuItemSelectedID == R.id.chart_tab) fragment = ChartFragment()
             else fragment = SettingsFragment()
 
             val fragmentTransaction = supportFragmentManager.beginTransaction()
