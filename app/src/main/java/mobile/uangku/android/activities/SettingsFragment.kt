@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 import com.google.android.material.snackbar.Snackbar
 import mobile.uangku.android.R
 import mobile.uangku.android.activities.auth.ChangePasswordActivity
+import mobile.uangku.android.activities.auth.EditProfileActivity
 import mobile.uangku.android.core.*
 import org.json.JSONObject
 import java.io.File
@@ -56,6 +57,10 @@ class SettingsFragment : Fragment() {
         // TODO: add import image from gallery
         profilePhoto.setOnClickListener {
             openCaptureOption(PHOTO_PROFILE)
+        }
+
+        editProfile.setOnClickListener {
+            startActivity(Intent(fragmentContext, EditProfileActivity::class.java))
         }
 
         changePassword.setOnClickListener {

@@ -55,7 +55,9 @@
         <activity
             android:name=".activities.auth.ChangePasswordActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".activities.auth.EditProfileActivity"
+            android:screenOrientation="portrait" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="mobile.uangku.android.provider"

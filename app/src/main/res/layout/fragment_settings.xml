@@ -140,7 +140,6 @@
                 android:background="@drawable/rectangle_background"
                 android:orientation="vertical">
 
-
                 <LinearLayout
                     android:id="@+id/editProfile"
                     android:padding="10dp"

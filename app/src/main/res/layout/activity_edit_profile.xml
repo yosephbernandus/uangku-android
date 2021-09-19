@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.goal.EditGoalActivity"
+    tools:context=".activities.auth.EditProfileActivity"
     android:background="@color/background">
 
     <ScrollView
@@ -116,12 +116,12 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/nameTextView"
                             android:textSize="15sp"
                             android:hint="Nama"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:id="@+id/nameTextView"
                             android:fontFamily="@font/poppins_regular"
                             />
 
@@ -149,6 +149,7 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneNumberEditText"
                             android:textSize="15sp"
                             android:hint="082xxxxxxxx"
                             android:layout_width="match_parent"
@@ -186,6 +187,7 @@
                         app:boxBackgroundColor="#E9EFF1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/birthdayEditText"
                             android:textSize="15sp"
                             android:hint="1 Jan 1970"
                             android:layout_width="match_parent"
@@ -213,17 +215,16 @@
                         android:layout_height="wrap_content" />
 
                     <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:checkedButton="@+id/radio_button_1"
+                        android:id="@+id/genderRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <RadioButton
-                            android:id="@+id/radio_button_1"
+                            android:id="@+id/male"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Laki-Laki"/>
                         <RadioButton
-                            android:id="@+id/radio_button_2"
+                            android:id="@+id/female"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="Perempuan"/>
@@ -279,7 +280,6 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
-                        android:id="@+id/saveGoal"
                         android:text="Simpan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
