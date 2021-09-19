@@ -14,6 +14,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import mobile.uangku.android.R
 import mobile.uangku.android.core.*
+import mobile.uangku.android.models.UserData
 import org.json.JSONObject
 import java.util.*
 
@@ -25,6 +26,33 @@ class EditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+
+        preferences = Preferences(this)
+
+        var name = UserData.getUserName(this)
+        if (name != null)
+            nameTextView.setText(name)
+
+        var phone = UserData.getPhone(this)
+        if (phone != null)
+            phone = phone.replace("+62", "0")
+            phoneNumberEditText.setText(phone)
+
+        var birthday = UserData.getBirthday(this)
+        if (birthday != null)
+            birthdayEditText.setText(birthday)
+
+        var gender = UserData.getGender(this)
+        if (gender != null){
+            if (gender == 1)
+                male.isChecked = true
+            else
+                female.isChecked = true
+        }
+
+        var address = UserData.getAddress(this)
+        if (address != null)
+            addressTextView.setText(address)
 
         phoneNumberEditText.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(value: Editable?) {
