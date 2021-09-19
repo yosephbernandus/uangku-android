@@ -30,18 +30,12 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:contentDescription="Circle"
-                        android:layout_alignParentLeft="true"
                         android:layout_width="wrap_content"
-                        app:srcCompat="@drawable/circle_shape"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:contentDescription="Circle"
+                        app:srcCompat="@drawable/circle_shape" />
 
-                    <ImageView
-                        android:layout_margin="25dp"
-                        android:onClick="backIconOnClick"
-                        app:srcCompat="@drawable/ic_back_icon"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
 
                     <TextView
                         android:id="@+id/statusText"
@@ -148,6 +142,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/editProfile"
                     android:padding="10dp"
                     android:background="@drawable/rounded_section"
                     android:layout_marginTop="20dp"
@@ -163,12 +158,12 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="14sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Atur Profile"/>
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Atur Profile"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
                         />
 
                         <ImageView

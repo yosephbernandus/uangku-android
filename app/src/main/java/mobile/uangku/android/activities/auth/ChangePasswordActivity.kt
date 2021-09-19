@@ -19,6 +19,10 @@ class ChangePasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_change_password)
     }
 
+    fun closeIconOnClick(view: View) {
+        finish()
+    }
+
     fun submitButtonOnClick(view: View) {
         val preferences = Preferences(this)
         if (!Validator.validateMinLength(oldPassword, 1))
