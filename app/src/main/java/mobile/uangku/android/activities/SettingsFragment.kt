@@ -26,6 +26,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import kotlinx.android.synthetic.main.fragment_settings.*
 import com.google.android.material.snackbar.Snackbar
+import io.realm.Realm
 import mobile.uangku.android.R
 import mobile.uangku.android.activities.auth.ChangePasswordActivity
 import mobile.uangku.android.activities.auth.EditProfileActivity
@@ -56,6 +57,12 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            syncProfile()
+            setupUI()
+        }
 
         // TODO: add import image from gallery
         profilePhotoLayout.setOnClickListener {
@@ -94,6 +101,7 @@ class SettingsFragment : Fragment() {
             alertDialog.show()
         }
 
+        syncProfile()
         setupUI()
     }
 
@@ -104,6 +112,7 @@ class SettingsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        syncProfile()
         setupUI()
     }
 
@@ -141,6 +150,23 @@ class SettingsFragment : Fragment() {
             }
         }
 
+    }
+
+    fun syncProfile() {
+        val request = API.createGetRequest(fragmentContext, "auth/sync-profile", null)
+        request.getAsJSONObject(object : JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject) {
+                if (!isVisible) return
+                swipeRefreshLayout.isRefreshing = false
+                Session.saveUserData(fragmentContext, response)
+                setupUI()
+            }
+
+            override fun onError(error: ANError) {
+                swipeRefreshLayout.isRefreshing = false
+                API.handleErrorResponse(fragmentContext, error)
+            }
+        })
     }
 
     fun submitPhoto() {
