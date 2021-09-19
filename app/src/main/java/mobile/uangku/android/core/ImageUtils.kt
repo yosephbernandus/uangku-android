@@ -7,7 +7,7 @@ import java.io.*
 
 object ImageUtils {
 
-    fun bitmapToFile(context: Context, temp: String, realBitmap: Bitmap, maxWidth: Float = 800F): File? {
+    fun bitmapToFile(context: Context, temp: String, realBitmap: Bitmap, maxWidth: Float = 1600F): File? {
         val bitmap = resize(realBitmap, maxWidth)
         val bytes = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 60, bytes)

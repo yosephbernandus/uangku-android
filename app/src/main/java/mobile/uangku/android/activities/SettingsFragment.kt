@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -29,6 +30,7 @@ import mobile.uangku.android.R
 import mobile.uangku.android.activities.auth.ChangePasswordActivity
 import mobile.uangku.android.activities.auth.EditProfileActivity
 import mobile.uangku.android.core.*
+import mobile.uangku.android.models.UserData
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
@@ -46,6 +48,7 @@ class SettingsFragment : Fragment() {
     var imageType: Int = 0
     var bitmap: Bitmap? = null
     var currentPhotoUri: Uri? = null
+    var storedBitmap: Bitmap? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
@@ -55,7 +58,7 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // TODO: add import image from gallery
-        profilePhoto.setOnClickListener {
+        profilePhotoLayout.setOnClickListener {
             openCaptureOption(PHOTO_PROFILE)
         }
 
@@ -91,6 +94,7 @@ class SettingsFragment : Fragment() {
             alertDialog.show()
         }
 
+        setupUI()
     }
 
     override fun onAttach(context: Context) {
@@ -100,6 +104,17 @@ class SettingsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        setupUI()
+    }
+
+    fun setupUI() {
+        val photoUrl = UserData.getUserPhotoUrl(fragmentContext)
+
+        if (photoUrl != null) {
+            placeholderProfilePhoto.visibility = View.GONE
+            photo.visibility = View.VISIBLE
+            photo.setImageURI(photoUrl)
+        }
     }
 
     fun openCaptureOption(status_code: Int) {
@@ -119,7 +134,9 @@ class SettingsFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == PHOTO_PROFILE && currentPhotoUri != null) {
             bitmap = MediaStore.Images.Media.getBitmap(fragmentContext.contentResolver, currentPhotoUri)
-            if (bitmap != null) {
+            if (bitmap!!.width >= bitmap!!.height) storedBitmap = rotateImage(bitmap!!, 90f)
+                else storedBitmap = bitmap!!
+            if (storedBitmap != null) {
                 submitPhoto()
             }
         }
@@ -127,9 +144,9 @@ class SettingsFragment : Fragment() {
     }
 
     fun submitPhoto() {
-        var profileFile = ImageUtils.bitmapToFile(fragmentContext, "temp_profile_photo.jpeg", bitmap!!)
+        var profileFile = ImageUtils.bitmapToFile(fragmentContext, "temp_profile_photo.jpeg", storedBitmap!!)
 
-        AndroidNetworking.upload(API.getBaseURL(fragmentContext) + "auth/change-profile-photo")
+        AndroidNetworking.upload(API.getBaseURL(fragmentContext) + "auth/edit-profile-photo")
             .addMultipartFile("photo", profileFile)
             .addMultipartParameter("token", API.TOKEN)
             .addMultipartParameter("session_key", Session.key(fragmentContext))
@@ -138,6 +155,8 @@ class SettingsFragment : Fragment() {
             .getAsJSONObject(object: JSONObjectRequestListener {
                 override fun onResponse(response: JSONObject) {
                     Session.saveUserData(fragmentContext, response)
+                    val photoUrl = UserData.getUserPhotoUrl(fragmentContext)
+                    photo.setImageURI(photoUrl)
                     activity?.let { Snackbar.make(it.findViewById(android.R.id.content), "Edit Photo berhasil dilakukan", Snackbar.LENGTH_SHORT).show() }
                 }
 
@@ -183,6 +202,13 @@ class SettingsFragment : Fragment() {
             ".jpg", /* suffix */
             storageDir /* directory */
         )
+    }
+
+    fun rotateImage(source: Bitmap, angle: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(angle)
+        return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix,
+            true)
     }
 
 }
