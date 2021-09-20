@@ -53,6 +53,10 @@ class HomeFragment : Fragment() {
             (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.transactions_tab
         }
 
+        allTransactions.setOnClickListener {
+            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.transactions_tab
+        }
+
         setupUI()
     }
 
@@ -84,6 +88,7 @@ class HomeFragment : Fragment() {
             .findAll().sum("amount")
         incomeMonthAmount.text = "Rp. ${Utils.addThousandSeparator(incomeAmount.toDouble())}"
 
+        // TODO: ADD LAYOUT IF TRANSACTION IS NONE
         listTransactionRecylerView.visibility = View.VISIBLE
         listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
         listTransactionRecylerView.layoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
