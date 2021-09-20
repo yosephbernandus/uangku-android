@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_tab.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.photo
@@ -76,12 +77,15 @@ class HomeFragment : Fragment() {
         transactions = Realm.getDefaultInstance().where(Transaction::class.java).greaterThanOrEqualTo("created", firstDate.time)
             .lessThanOrEqualTo("created", currentDate.time).findAll()
 
+        val lastTransaction = transactions.where().limit(5)
+            .sort("id", Sort.DESCENDING).findAll()
+
         val incomeAmount = transactions.where().equalTo("type", Transaction.Type.INCOME.ordinal)
             .findAll().sum("amount")
         incomeMonthAmount.text = "Rp. ${Utils.addThousandSeparator(incomeAmount.toDouble())}"
 
         listTransactionRecylerView.visibility = View.VISIBLE
-        listTransactionRecylerView.adapter = RecyclerViewAdapter(transactions)
+        listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
         listTransactionRecylerView.layoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
         listTransactionRecylerView.isNestedScrollingEnabled = false
     }
