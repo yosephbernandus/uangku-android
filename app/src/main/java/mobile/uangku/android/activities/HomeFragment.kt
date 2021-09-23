@@ -18,13 +18,22 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.photo
 import kotlinx.android.synthetic.main.fragment_home.placeholderProfilePhoto
 import kotlinx.android.synthetic.main.fragment_settings.*
+import kotlinx.android.synthetic.main.goal_fragment_item.view.*
+import kotlinx.android.synthetic.main.goal_fragment_item.view.goalIcon
+import kotlinx.android.synthetic.main.last_goal_item.view.*
 import kotlinx.android.synthetic.main.last_transaction_item.view.*
 import mobile.uangku.android.R
+import mobile.uangku.android.core.Constants
+import mobile.uangku.android.core.DateUtils
 import mobile.uangku.android.core.Preferences
 import mobile.uangku.android.core.Utils
 import mobile.uangku.android.models.Category
+import mobile.uangku.android.models.Goal
 import mobile.uangku.android.models.Transaction
 import mobile.uangku.android.models.UserData
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -33,6 +42,7 @@ class HomeFragment : Fragment() {
     lateinit var fragmentContext: Context
     lateinit var tabActivity: TabActivity
     lateinit var transactions: RealmResults<Transaction>
+    lateinit var goals: RealmResults<Goal>
     var currentDate: Calendar = Calendar.getInstance()
     var firstDate: Calendar = Calendar.getInstance()
 
@@ -78,6 +88,9 @@ class HomeFragment : Fragment() {
             photo.setImageURI(photoUrl)
         }
 
+        goals = Realm.getDefaultInstance().where(Goal::class.java).limit(5)
+            .sort("id", Sort.DESCENDING).findAll()
+
         transactions = Realm.getDefaultInstance().where(Transaction::class.java).greaterThanOrEqualTo("created", firstDate.time)
             .lessThanOrEqualTo("created", currentDate.time).findAll()
 
@@ -93,6 +106,12 @@ class HomeFragment : Fragment() {
         listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
         listTransactionRecylerView.layoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
         listTransactionRecylerView.isNestedScrollingEnabled = false
+
+        // TODO: ADD LAYOUT IF GOAL IS NONE
+        listGoalRecyclerView.visibility = View.VISIBLE
+        listGoalRecyclerView.adapter = RecyclerViewAdapterGoal(goals)
+        listGoalRecyclerView.layoutManager = LinearLayoutManager(fragmentContext)
+        listGoalRecyclerView.isNestedScrollingEnabled = false
     }
 
     internal inner class RecyclerViewAdapter(var transactions: RealmResults<Transaction>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
@@ -132,6 +151,52 @@ class HomeFragment : Fragment() {
             val categoryNameTextView: TextView = view.categoryNameTextView
             val categoryIcon: SimpleDraweeView = view.categoryIcon
 
+        }
+    }
+
+    internal inner class RecyclerViewAdapterGoal(var goals: RealmResults<Goal>): RecyclerView.Adapter<RecyclerViewAdapterGoal.ViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.last_goal_item, parent, false))
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val goal = goals[position]
+            var goalTransaction = "Rp. 0 dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
+            var dateFormat =  SimpleDateFormat("yyyy-MM-dd")
+            var currentDate = DateUtils.fromDateString(dateFormat.format(Date()))!!.time
+            var achievementDate = goal.achievementDate!!.time
+            var differenceTime = Utils.getDifferenceTime((achievementDate - currentDate), Constants.DAYS)
+
+            if (goal!!.transactions != null){
+                val transactionAmount = goal!!.transactions!!.where().sum("amount").toDouble()
+                goalTransaction = "Rp. ${Utils.addThousandSeparator(transactionAmount)} dari Rp. ${Utils.addThousandSeparator(goal!!.amount)}"
+            }
+
+            holder.id = goal!!.id!!
+            if (goal != null && goal.categoryId != null) {
+                var category = Category[goal.categoryId!!]
+                if (category != null) {
+                    holder.goalIcon.setImageURI(category.logoUrl)
+                    holder.goalCategoryName.text = category.name
+                }
+            }
+
+            holder.goalDaysComplete.text = "${differenceTime} hari lagi"
+            holder.accumulateAmountGoal.text = goalTransaction
+
+        }
+
+        override fun getItemCount(): Int {
+            return goals.size
+        }
+
+        internal inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            var id = 0
+            val goalIcon: SimpleDraweeView = view.goalIcon
+            val goalCategoryName: TextView = view.goalCategoryName
+            val goalDaysComplete: TextView = view.goalDaysComplete
+            val accumulateAmountGoal: TextView = view.accumulatedAmountGoal
         }
     }
 }
