@@ -27,6 +27,7 @@ import mobile.uangku.android.models.Goal
 import mobile.uangku.android.models.Transaction
 import mobile.uangku.android.models.UserData
 import org.json.JSONObject
+import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -174,13 +175,12 @@ class HomeFragment : Fragment() {
         incomeMonthAmount.text = "Rp. ${Utils.addThousandSeparator(incomeAmount.toDouble())}"
 
 
-        var averageTransactions = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
-            .findAll().average("amount").toDouble()
-        averageOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(averageTransactions)}"
-
         var outcomeAmountTransaction = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
             .findAll().sum("amount").toDouble()
         totalOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(outcomeAmountTransaction)}"
+        var averageInAmonth = outcomeAmountTransaction / 30
+        averageInAmonth = averageInAmonth.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
+        averageOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(averageInAmonth)}"
 
         // TODO: ADD LAYOUT IF TRANSACTION IS NONE
         listTransactionRecylerView.visibility = View.VISIBLE
