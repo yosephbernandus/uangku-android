@@ -211,7 +211,7 @@
                             android:layout_margin="3dp"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@mipmap/bag_shop"/>
+                            app:srcCompat="@drawable/ic_home_outcome"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -264,7 +264,7 @@
                             android:layout_margin="3dp"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@mipmap/summary"/>
+                            app:srcCompat="@drawable/ic_home_chart"/>
                     </LinearLayout>
 
                     <LinearLayout
