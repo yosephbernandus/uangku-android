@@ -67,6 +67,10 @@ class HomeFragment : Fragment() {
             (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.transactions_tab
         }
 
+        allGoal.setOnClickListener {
+            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.savings_tab
+        }
+
         setupUI()
     }
 
