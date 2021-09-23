@@ -32,7 +32,7 @@
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:padding="6dp"
-                        android:id="@+id/goalIcon"
+                        android:id="@+id/categoryGoalIcon"
                         android:layout_width="35dp"
                         android:layout_height="35dp" />
 

@@ -9,30 +9,24 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.facebook.drawee.view.SimpleDraweeView
 import io.realm.Realm
 import io.realm.RealmResults
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_tab.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.photo
-import kotlinx.android.synthetic.main.fragment_home.placeholderProfilePhoto
-import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.goal_fragment_item.view.*
-import kotlinx.android.synthetic.main.goal_fragment_item.view.goalIcon
 import kotlinx.android.synthetic.main.last_goal_item.view.*
 import kotlinx.android.synthetic.main.last_transaction_item.view.*
 import mobile.uangku.android.R
-import mobile.uangku.android.core.Constants
-import mobile.uangku.android.core.DateUtils
-import mobile.uangku.android.core.Preferences
-import mobile.uangku.android.core.Utils
+import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Goal
 import mobile.uangku.android.models.Transaction
 import mobile.uangku.android.models.UserData
-import java.math.BigDecimal
-import java.math.RoundingMode
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,6 +39,9 @@ class HomeFragment : Fragment() {
     lateinit var goals: RealmResults<Goal>
     var currentDate: Calendar = Calendar.getInstance()
     var firstDate: Calendar = Calendar.getInstance()
+
+    val transactions_key ="transactions"
+    val goals_key ="goals"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         firstDate[Calendar.DAY_OF_MONTH] = 1
@@ -71,7 +68,78 @@ class HomeFragment : Fragment() {
             (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.savings_tab
         }
 
+        homeSwipeRefreshLayout.setOnRefreshListener {
+            homeSwipeRefreshLayout.isRefreshing = true
+            syncGoal()
+            syncTransaction()
+        }
+
         setupUI()
+    }
+
+    fun syncTransaction(withLoadingDialog: Boolean = false) {
+        var loadingDialog: LoadingDialog? = null
+        if (withLoadingDialog) {
+            loadingDialog = LoadingDialog(fragmentContext)
+            loadingDialog.show()
+        }
+
+        val request = API.createGetRequest(fragmentContext, "transactions", null)
+        request.getAsJSONObject(object : JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                if (!isVisible) return
+
+                if (homeSwipeRefreshLayout != null) homeSwipeRefreshLayout.isRefreshing = false
+                val realm = Realm.getDefaultInstance() as Realm
+
+                realm.executeTransactionAsync(Realm.Transaction { bgRealm ->
+                    Transaction.fromJSONArray(bgRealm, response.getJSONArray("transactions"))
+                }, Realm.Transaction.OnSuccess {
+                    Sync.setSyncTime(fragmentContext, transactions_key)
+                    setupUI()
+                })
+            }
+
+            override fun onError(error: ANError) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                homeSwipeRefreshLayout.isRefreshing = false
+                API.handleErrorResponse(fragmentContext, error)
+            }
+        })
+    }
+
+
+    fun syncGoal(withLoadingDialog: Boolean = false) {
+        var loadingDialog: LoadingDialog? = null
+        if (withLoadingDialog) {
+            loadingDialog = LoadingDialog(fragmentContext)
+            loadingDialog.show()
+        }
+
+        val request = API.createGetRequest(fragmentContext, "goals", null)
+        request.getAsJSONObject(object : JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                if (!isVisible) return
+
+                if (homeSwipeRefreshLayout != null) homeSwipeRefreshLayout.isRefreshing = false
+                val realm = Realm.getDefaultInstance() as Realm
+
+                realm.executeTransactionAsync(Realm.Transaction { bgRealm ->
+                    Goal.fromJSONArray(bgRealm, response.getJSONArray("goals"))
+                }, Realm.Transaction.OnSuccess {
+                    Sync.setSyncTime(fragmentContext, goals_key)
+                    setupUI()
+                })
+            }
+
+            override fun onError(error: ANError) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                homeSwipeRefreshLayout.isRefreshing = false
+                API.handleErrorResponse(fragmentContext, error)
+            }
+        })
     }
 
     override fun onAttach(context: Context) {
@@ -197,7 +265,7 @@ class HomeFragment : Fragment() {
 
         internal inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             var id = 0
-            val goalIcon: SimpleDraweeView = view.goalIcon
+            val goalIcon: SimpleDraweeView = view.categoryGoalIcon
             val goalCategoryName: TextView = view.goalCategoryName
             val goalDaysComplete: TextView = view.goalDaysComplete
             val accumulateAmountGoal: TextView = view.accumulatedAmountGoal
