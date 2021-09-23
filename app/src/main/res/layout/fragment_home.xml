@@ -225,25 +225,19 @@
                             android:textColor="@color/black"
                             android:fontFamily="@font/poppins_regular"
                             android:textSize="8sp"
-                            android:layout_width="wrap_content"
+                            android:paddingBottom="6dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Anda dapat mengeluarkan"/>
+                            android:text="Total pengeluaran anda bulan ini"/>
 
                         <TextView
-                            android:textColor="@color/black"
+                            android:id="@+id/totalOutcomeMonth"
+                            android:textColor="@color/minus"
                             android:fontFamily="@font/poppins_bold"
                             android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Oops!"/>
-
-                        <TextView
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="8sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Masukan budget anda terlebih dahulu"/>
+                            android:text="Rp. 500.000"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -281,9 +275,10 @@
                             android:paddingBottom="6dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rata - rata pengeluaran per hari"/>
+                            android:text="Rata - rata pengeluaran per hari bulan ini"/>
 
                         <TextView
+                            android:id="@+id/averageOutcomeMonth"
                             android:textColor="@color/black"
                             android:fontFamily="@font/poppins_bold"
                             android:textSize="10sp"

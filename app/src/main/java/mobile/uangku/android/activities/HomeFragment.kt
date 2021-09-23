@@ -173,6 +173,15 @@ class HomeFragment : Fragment() {
             .findAll().sum("amount")
         incomeMonthAmount.text = "Rp. ${Utils.addThousandSeparator(incomeAmount.toDouble())}"
 
+
+        var averageTransactions = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
+            .findAll().average("amount").toDouble()
+        averageOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(averageTransactions)}"
+
+        var outcomeAmountTransaction = transactions.where().equalTo("type", Transaction.Type.OUTCOME.ordinal)
+            .findAll().sum("amount").toDouble()
+        totalOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(outcomeAmountTransaction)}"
+
         // TODO: ADD LAYOUT IF TRANSACTION IS NONE
         listTransactionRecylerView.visibility = View.VISIBLE
         listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
