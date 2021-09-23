@@ -371,80 +371,80 @@
                     android:layout_marginTop="10dp"
                     android:visibility="gone" />
 
-                <RelativeLayout
-                    android:paddingRight="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--                <RelativeLayout-->
+<!--                    android:paddingRight="20dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/black"
-                        android:text="Sisa Budgetku"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+<!--                    <TextView-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:text="Sisa Budgetku"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:fontFamily="@font/poppins_bold"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
 
-                    <TextView
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:textColor="@color/linkSection"
-                        android:text="Tambah Budget"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+<!--                    <TextView-->
+<!--                        android:layout_alignParentRight="true"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:textColor="@color/linkSection"-->
+<!--                        android:text="Tambah Budget"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:fontFamily="@font/poppins_bold"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-                <LinearLayout
-                    android:background="@drawable/rounded_section"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+<!--                <LinearLayout-->
+<!--                    android:background="@drawable/rounded_section"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <LinearLayout
-                        android:paddingRight="30dp"
-                        android:paddingLeft="30dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+<!--                    <LinearLayout-->
+<!--                        android:paddingRight="30dp"-->
+<!--                        android:paddingLeft="30dp"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
 
-                        <ImageView
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="10dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/money_hand"/>
+<!--                        <ImageView-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginBottom="10dp"-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            app:srcCompat="@drawable/money_hand"/>-->
 
-                        <TextView
-                            android:layout_gravity="center"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="10sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="5dp"
-                            android:text="Sisa uang anda adalah"/>
+<!--                        <TextView-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:fontFamily="@font/poppins_regular"-->
+<!--                            android:textSize="10sp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:paddingBottom="5dp"-->
+<!--                            android:text="Sisa uang anda adalah"/>-->
 
-                        <TextView
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="10sp"
-                            android:textColor="@color/black"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Rp. 1.500.000"/>
-                    </LinearLayout>
-                </LinearLayout>
+<!--                        <TextView-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:fontFamily="@font/poppins_bold"-->
+<!--                            android:textSize="10sp"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Rp. 1.500.000"/>-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
 
                 <RelativeLayout
                     android:paddingRight="20dp"
