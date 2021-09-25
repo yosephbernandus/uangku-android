@@ -320,50 +320,41 @@
 
                 </RelativeLayout>
 
-<!--                <LinearLayout-->
-<!--                    android:background="@drawable/rounded_section"-->
-<!--                    android:layout_marginTop="20dp"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content">-->
+                <LinearLayout
+                    android:id="@+id/noTransactionItem"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-<!--                    <LinearLayout-->
-<!--                        android:paddingRight="30dp"-->
-<!--                        android:paddingLeft="30dp"-->
-<!--                        android:paddingTop="10dp"-->
-<!--                        android:paddingBottom="10dp"-->
-<!--                        android:orientation="vertical"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content">-->
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-<!--                        <ImageView-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:layout_marginBottom="10dp"-->
-<!--                            android:layout_width="50dp"-->
-<!--                            android:layout_height="50dp"-->
-<!--                            app:srcCompat="@drawable/groceries"/>-->
+                        <ImageView
+                            android:layout_margin="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/important"/>
+                    </LinearLayout>
 
-<!--                        <TextView-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:textColor="@color/black"-->
-<!--                            android:fontFamily="@font/poppins_semi_bold"-->
-<!--                            android:textSize="10sp"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:paddingBottom="5dp"-->
-<!--                            android:text="Groceries"/>-->
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        android:paddingBottom="6dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Belum ada data transaksi"/>
+                </LinearLayout>
 
-<!--                        <TextView-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:textColor="@color/minus"-->
-<!--                            android:fontFamily="@font/poppins_semi_bold"-->
-<!--                            android:textSize="10sp"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="-Rp. 500.000"/>-->
-<!--                    </LinearLayout>-->
-<!--                </LinearLayout>-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listTransactionRecylerView"
                     android:layout_width="match_parent"
@@ -476,6 +467,42 @@
                         android:textSize="12sp" />
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/noGoalItem"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:background="@drawable/rounded_section"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_margin="3dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/important"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="12sp"
+                        android:paddingBottom="6dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Belum ada data tujuan keuangan"/>
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listGoalRecyclerView"

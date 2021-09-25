@@ -189,17 +189,21 @@ class HomeFragment : Fragment() {
         averageInAmonth = averageInAmonth.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
         averageOutcomeMonth.text = "Rp. ${Utils.addThousandSeparator(averageInAmonth)}"
 
-        // TODO: ADD LAYOUT IF TRANSACTION IS NONE
-        listTransactionRecylerView.visibility = View.VISIBLE
-        listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
-        listTransactionRecylerView.layoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
-        listTransactionRecylerView.isNestedScrollingEnabled = false
+        if (lastTransaction.size != 0){
+            noTransactionItem.visibility = View.GONE
+            listTransactionRecylerView.visibility = View.VISIBLE
+            listTransactionRecylerView.adapter = RecyclerViewAdapter(lastTransaction)
+            listTransactionRecylerView.layoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
+            listTransactionRecylerView.isNestedScrollingEnabled = false
+        }
 
-        // TODO: ADD LAYOUT IF GOAL IS NONE
-        listGoalRecyclerView.visibility = View.VISIBLE
-        listGoalRecyclerView.adapter = RecyclerViewAdapterGoal(goals)
-        listGoalRecyclerView.layoutManager = LinearLayoutManager(fragmentContext)
-        listGoalRecyclerView.isNestedScrollingEnabled = false
+        if (goals.size != 0) {
+            noGoalItem.visibility = View.GONE
+            listGoalRecyclerView.visibility = View.VISIBLE
+            listGoalRecyclerView.adapter = RecyclerViewAdapterGoal(goals)
+            listGoalRecyclerView.layoutManager = LinearLayoutManager(fragmentContext)
+            listGoalRecyclerView.isNestedScrollingEnabled = false
+        }
     }
 
     internal inner class RecyclerViewAdapter(var transactions: RealmResults<Transaction>): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
