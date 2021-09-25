@@ -78,11 +78,46 @@ class HomeFragment : Fragment() {
 
         homeSwipeRefreshLayout.setOnRefreshListener {
             homeSwipeRefreshLayout.isRefreshing = true
+            syncCategory()
             syncGoal()
             syncTransaction()
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        syncCategory()
+        syncGoal()
+        syncTransaction()
         setupUI()
+    }
+
+    fun syncCategory(withLoadingDialog: Boolean = false) {
+        var loadingDialog: LoadingDialog? = null
+        if (withLoadingDialog) {
+            loadingDialog = LoadingDialog(fragmentContext)
+            loadingDialog.show()
+        }
+
+        val request = API.createGetRequest(fragmentContext, "categories", null)
+        request.getAsJSONObject(object : JSONObjectRequestListener {
+            override fun onResponse(response: JSONObject) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                if (!isVisible) return
+
+                if (homeSwipeRefreshLayout != null) homeSwipeRefreshLayout.isRefreshing = false
+                val realm = Realm.getDefaultInstance()
+                realm.executeTransactionAsync{ bgRealm ->
+                    Category.fromJSONArray(bgRealm, response.getJSONArray("categories"))
+                }
+            }
+
+            override fun onError(error: ANError) {
+                if (withLoadingDialog) loadingDialog!!.dismissIfNeeded()
+                homeSwipeRefreshLayout.isRefreshing = false
+                API.handleErrorResponse(fragmentContext, error)
+            }
+        })
     }
 
     fun syncTransaction(withLoadingDialog: Boolean = false) {
@@ -220,9 +255,10 @@ class HomeFragment : Fragment() {
 
             if (transaction != null && transaction.categoryId != null) {
                 var category = Category[transaction.categoryId!!]
-                if (category != null)
+                if (category != null) {
                     holder.categoryNameTextView.text = category.name
-                    holder.categoryIcon.setImageURI(category!!.logoUrl)
+                    holder.categoryIcon.setImageURI(category.logoUrl)
+                }
             }
             if (type == Transaction.Type.INCOME.ordinal) {
                 holder.transactionAmountTextView.text = "+ Rp. ${Utils.addThousandSeparator(amount)}"
