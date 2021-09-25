@@ -35,12 +35,6 @@
                         app:srcCompat="@drawable/circle_shape"
                         android:layout_height="wrap_content" />
 
-                    <ImageView
-                        android:layout_margin="25dp"
-                        android:onClick="backIconOnClick"
-                        app:srcCompat="@drawable/ic_back_icon"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
 
                     <TextView
                         android:id="@+id/statusText"
@@ -49,10 +43,9 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="100dp"
                         android:fontFamily="@font/poppins_bold"
-                        android:text="Statistik \nPemasukan Dan Pengeluaran"
+                        android:text="Statistik"
                         android:textColor="@color/white"
-                        android:textSize="16sp" />
-
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
             </LinearLayout>

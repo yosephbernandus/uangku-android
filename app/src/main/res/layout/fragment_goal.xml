@@ -42,15 +42,15 @@
                         android:layout_height="20dp" />
 
                     <TextView
-                        android:textColor="@color/white"
                         android:id="@+id/statusText"
-                        android:textSize="18sp"
-                        android:layout_marginTop="100dp"
-                        android:layout_marginLeft="20dp"
-                        android:fontFamily="@font/poppins_bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tujuan Keuangan"/>
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="100dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Tujuan Keuangan"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
 
 
                     <LinearLayout
