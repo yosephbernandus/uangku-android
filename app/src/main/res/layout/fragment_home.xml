@@ -96,6 +96,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/statisticTransaction"
                         android:fillViewport="true"
                         android:padding="10dp"
                         android:orientation="vertical"

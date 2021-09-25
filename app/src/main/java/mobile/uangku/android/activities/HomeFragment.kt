@@ -1,6 +1,7 @@
 package mobile.uangku.android.activities
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.goal_fragment_item.view.*
 import kotlinx.android.synthetic.main.last_goal_item.view.*
 import kotlinx.android.synthetic.main.last_transaction_item.view.*
 import mobile.uangku.android.R
+import mobile.uangku.android.activities.goal.EditGoalActivity
+import mobile.uangku.android.activities.transaction.EditTransactionActivity
 import mobile.uangku.android.core.*
 import mobile.uangku.android.models.Category
 import mobile.uangku.android.models.Goal
@@ -53,12 +56,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         preferences = Preferences(fragmentContext)
 
+        statisticTransaction.setOnClickListener {
+            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.chart_tab
+        }
+
         goalSavingsOnClick.setOnClickListener {
-            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.savings_tab
+            startActivity(Intent(fragmentContext, EditGoalActivity::class.java))
         }
 
         logTransactionOnClick.setOnClickListener {
-            (fragmentContext as TabActivity).bottomNavigationView.selectedItemId = R.id.transactions_tab
+            startActivity(Intent(fragmentContext, EditTransactionActivity::class.java))
         }
 
         allTransactions.setOnClickListener {
