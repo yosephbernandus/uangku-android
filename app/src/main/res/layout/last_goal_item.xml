@@ -21,7 +21,7 @@
                 <LinearLayout
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:id="@id/iconLayout"
+                    android:id="@+id/iconLayout"
                     android:layout_marginBottom="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

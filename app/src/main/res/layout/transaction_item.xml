@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_below="@id/textMonthDate"
-            android:id="@id/iconLayout"
+            android:id="@+id/iconLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

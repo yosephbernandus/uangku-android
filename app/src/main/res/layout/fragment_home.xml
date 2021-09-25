@@ -89,7 +89,6 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/iconLayout"
                     android:fillViewport="true"
                     android:layout_marginTop="12dp"
                     android:orientation="horizontal"
