@@ -14,6 +14,8 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -26,7 +28,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:fontFamily="@font/poppins_semi_bold"
@@ -44,6 +45,7 @@
                     app:srcCompat="@mipmap/login_icon"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:textColorHint="@color/mediumGray"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
