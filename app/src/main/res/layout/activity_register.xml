@@ -51,7 +51,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_semi_bold"
@@ -70,7 +70,7 @@
                 android:text="Let's help you manage your money." />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
